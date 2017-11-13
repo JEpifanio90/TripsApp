@@ -23,7 +23,7 @@
         function sendData(data) {
             requestService.method = 'POST';
             requestService.url = APP_CONFIG.USER_ENDPOINT;
-            requestService.data = { user: data };
+            requestService.data = data;
             requestService.getHttpPromise().then(function(response) {
                 console.log(response);
             }).catch(function(error) {

@@ -36,16 +36,16 @@
                                     </md-input-container>
                                     <md-input-container flex style="margin-bottom: 0px;">
                                         <label>Password Confirmation</label>
-                                        <input ng-model="loginCtrl.user.passwordConf" type="password">
+                                        <input ng-model="loginCtrl.user.password_confirmation" type="password">
                                     </md-input-container>
                                 </div>
                                 <md-input-container flex style="margin-top: 0px; margin-bottom: 0px;">
                                     <h4 class="md-display-8">Account type</h4>
                                     <div layout="row">
-                                        <md-checkbox flex ng-checked="loginCtrl.user.accountType === 'Trips Advisor'" ng-click="loginCtrl.assignAccountType('Trips Advisor')">
+                                        <md-checkbox flex ng-checked="loginCtrl.user.role === 'Trips Advisor'" ng-click="loginCtrl.assignAccountType('Trips Advisor')">
                                             Trips Advisor
                                         </md-checkbox>
-                                        <md-checkbox flex ng-checked="loginCtrl.user.accountType === 'Trips Manager'" ng-click="loginCtrl.assignAccountType('Trips Manager')">
+                                        <md-checkbox flex ng-checked="loginCtrl.user.role === 'Trips Manager'" ng-click="loginCtrl.assignAccountType('Trips Manager')">
                                             Trips Manager
                                         </md-checkbox>    
                                     </div>

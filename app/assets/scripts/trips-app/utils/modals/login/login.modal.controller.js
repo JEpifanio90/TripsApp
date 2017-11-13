@@ -10,20 +10,14 @@
             firstName: '',
             lastName: '',
             email: '',
-            accountType: '',
-            password: ''
+            role: '',
+            password: '',
+            password_confirmation: ''
         };
-        loginModalScope.currentAccountType = '';
+        loginModalScope.currentRole = '';
 
         loginModalScope.sendCredentials = function() {
-            var user = {
-                first_name: loginModalScope.user.firstName,
-                last_name: loginModalScope.user.lastName,
-                email: loginModalScope.user.email,
-                role: loginModalScope.user.accountType,
-                access_to_module_8: true
-            };
-            $mdDialog.hide(user);
+            $mdDialog.hide({ user: loginModalScope.user});
         };
 
         loginModalScope.assignAccountType = function(accountType) {
