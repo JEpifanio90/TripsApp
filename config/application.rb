@@ -24,6 +24,7 @@ module TripsApp
       g.orm :active_record 
     end
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+    config.autoload_paths << Rails.root.join('lib')
     config.api_only = true
   end
 end

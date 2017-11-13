@@ -21,7 +21,7 @@
         };
 
         loginModalScope.assignAccountType = function(accountType) {
-            loginModalScope.user.accountType = accountType;
+            loginModalScope.user.role = accountType;
         };
 
         loginModalScope.cancel = function() {
