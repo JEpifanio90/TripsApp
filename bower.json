@@ -1,0 +1,32 @@
+{
+  "name": "tripsapp",
+  "homepage": "https://github.com/JEpifanio90/TripApp",
+  "authors": [
+    "Jose Epifanio <jose.epifanio90@gmail.com>"
+  ],
+  "description": "AngularJs application using rails assets pipeline and a little of bower",
+  "main": "",
+  "keywords": [
+    "rails",
+    "assets",
+    "pipeline",
+    "angularjs",
+    "bower",
+    "coursera",
+    "ruby"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "^1.1.5",
+    "angular-animate": "^1.6.6",
+    "angular-aria": "^1.6.6"
+  }
+}

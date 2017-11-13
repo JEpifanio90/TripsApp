@@ -1,0 +1,87 @@
+<md-dialog aria-label="Access Modal">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Access</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="loginCtrl.cancel()">
+                    <md-icon aria-label="Close dialog"><%= image_tag("close_icon.png", :alt => "icon", size: "24x24") %></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content style="max-width:800px;max-height:810px; ">
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Sign in">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-5" style="margin-bottom: 0px;">Account Info</h1>
+                        <div layout="column">
+                                <div flex layout="row">
+                                    <md-input-container flex style="margin-bottom: 0px;">
+                                        <label>First Name</label>
+                                        <input ng-model="loginCtrl.user.firstName">
+                                    </md-input-container>
+                                    <md-input-container flex style="margin-bottom: 0px;">
+                                        <label>Last Name</label>
+                                        <input ng-model="loginCtrl.user.lastName">
+                                    </md-input-container>
+                                </div>
+                                <md-input-container flex style="margin-bottom: 0px;">
+                                    <label>Email</label>
+                                    <input ng-model="loginCtrl.user.email">
+                                </md-input-container>
+                                <div flex layout="row">
+                                    <md-input-container flex style="margin-bottom: 0px;">
+                                        <label>Password</label>
+                                        <input ng-model="loginCtrl.user.password" type="password">
+                                    </md-input-container>
+                                    <md-input-container flex style="margin-bottom: 0px;">
+                                        <label>Password Confirmation</label>
+                                        <input ng-model="loginCtrl.user.passwordConf" type="password">
+                                    </md-input-container>
+                                </div>
+                                <md-input-container flex style="margin-top: 0px; margin-bottom: 0px;">
+                                    <h4 class="md-display-8">Account type</h4>
+                                    <div layout="row">
+                                        <md-checkbox flex ng-checked="loginCtrl.user.accountType === 'Trips Advisor'" ng-click="loginCtrl.assignAccountType('Trips Advisor')">
+                                            Trips Advisor
+                                        </md-checkbox>
+                                        <md-checkbox flex ng-checked="loginCtrl.user.accountType === 'Trips Manager'" ng-click="loginCtrl.assignAccountType('Trips Manager')">
+                                            Trips Manager
+                                        </md-checkbox>    
+                                    </div>
+                                </md-input-container>
+                            </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Log in">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-5">Account Info</h1>
+                            <div layout="column">
+                                <md-input-container flex="50">
+                                    <label>Account</label>
+                                    <input ng-model="loginCtrl.user.email">
+                                </md-input-container>
+
+                                <md-input-container flex="50">
+                                    <label>Password</label>
+                                    <input ng-model="loginCtrl.user.password" type="password">
+                                </md-input-container>
+                            </div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button href="http://lmgtfy.com/?q=How+to+not+forget+passwords%3F" target="_blank" md-autofocus>
+              Forgot Password?
+            </md-button>
+            <span flex></span>
+            <md-button ng-click="loginCtrl.cancel()" >
+              Cancel
+            </md-button>
+            <md-button ng-click="loginCtrl.sendCredentials()" style="margin-right:20px;" >
+              Ok
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

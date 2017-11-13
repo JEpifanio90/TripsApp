@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  username: 'postgres' #<%= ENV['POSTGRES_USER'] %>
+  password: 'asdqwe123' #<%= ENV['POSTGRES_PASSWORD'] %>
+  host: 'localhost' #<%= ENV['POSTGRES_HOST'] %>
+
+development:
+  <<: *default
+  database: capstone_dev
+test:
+  <<: *default
+  database: capstone_test
+
+production:
+  <<: *default
+  database: capstone_prod
