@@ -20,3 +20,4 @@
         //= require trips-app/utils/services/request.service
     
     //= require trips-app/pages/login/login.controller
+    //= require trips-app/pages/home/home.controller

@@ -12,12 +12,12 @@
             email: '',
             role: '',
             password: '',
-            password_confirmation: ''
+            passwordConfirmation: ''
         };
         loginModalScope.currentRole = '';
 
         loginModalScope.sendCredentials = function() {
-            $mdDialog.hide({ user: loginModalScope.user});
+            $mdDialog.hide(loginModalScope.user);
         };
 
         loginModalScope.assignAccountType = function(accountType) {
