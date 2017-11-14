@@ -4,6 +4,6 @@ Rails.application.routes.draw do
     resources :images
     resources :trips
     resources :users #, except: [:new, :edit]
-    # post 'login', to: 'auth#0authenticate'
+    post 'login', to: 'authentication#authenticate'
   end
 end
