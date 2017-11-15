@@ -1,13 +1,35 @@
 <div layout="column">
-    <h1 flex>Account management</h1>
     <md-container flex>
         <h2>Selected User:</h2>
+            <md-input-container>
+                <label>First Name</label>
+                <input ng-model="userCtrl.currentUser.first_name">
+            </md-input-container>
+            <md-input-container>
+                <label>Last Name</label>
+                <input ng-model="userCtrl.currentUser.last_name">
+            </md-input-container>
+            <md-input-container>
+                <label>Email</label>
+                <input ng-model="userCtrl.currentUser.email">
+            </md-input-container>
+            <md-button>
+                <label>Create</label>
+            </md-button>
+            <md-button>
+                <label>Edit</label>
+            </md-button>
     </md-container>
     <md-list ng-cloak flex>
-        <md-subheader class="md-no-sticky">Users</md-subheader>
-        <md-list-item ng-repeat="user in userCtrl.users">
-            <p> {{ user.first_name }} {{ user.last_name }} </p>
-            <md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox>
+        <md-subheader class="md-no-sticky">Available Users</md-subheader>
+        <md-list-item ng-repeat="user in userCtrl.users" ng-click="userCtrl.setCurrentUser(user)" class="noright">
+            <img alt="{{ user.first_name }}" ng-src="http://droidlessons.com/wp-content/uploads/2017/05/person-1824144_960_720-e1494184045144.png" class="md-avatar" />
+            <p>{{ user.first_name }}</p>
+            <p>{{ user.last_name }}</p>
+            <p>{{ user.email }}</p>
+            <p>{{ user.role }}</p>
+            <md-checkbox class="md-secondary" ng-model="user.access_to_module_8"> Has access to module 8</md-checkbox>
+            <md-icon class="md-secondary" ng-click="doSecondaryAction($event)" aria-label="Chat"><i class="material-icons">delete_forever</i></md-icon>
         </md-list-item>
     </md-list>
 </div>

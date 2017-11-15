@@ -1,8 +1,36 @@
-<h1>TRIPS</h1>
-<md-list ng-cloak>
-    <md-subheader class="md-no-sticky">Single Action Checkboxes</md-subheader>
-    <md-list-item ng-repeat="trip in tripsCtrl.trips">
-        <p> {{ trip.name }} </p>
-        <md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox>
-    </md-list-item>
-</md-list>
+<div layout="column">
+    <md-container flex>
+        <h2>Selected Trip:</h2>
+        <md-input-container>
+            <label>Title</label>
+            <input ng-model="tripsCtrl.currentTrip.title">
+        </md-input-container>
+        <md-input-container>
+            <label>Description</label>
+            <input ng-model="tripsCtrl.currentTrip.description">
+        </md-input-container>
+        <md-input-container>
+            <label>Location</label>
+            <input ng-model="tripsCtrl.currentTrip.location">
+        </md-input-container>
+        <md-button>
+            <label>Create</label>
+        </md-button>
+        <md-button>
+            <label>Edit</label>
+        </md-button>
+        <md-button>
+            <label>Delete</label>
+        </md-button>
+    </md-container>
+    <md-list ng-cloak flex>
+        <md-subheader class="md-no-sticky">Available trips</md-subheader>
+        <md-list-item ng-repeat="trip in tripsCtrl.trips" ng-click="tripsCtrl.setTrip(trip)" class="noright">
+            <img alt="{{ trip.title }}" ng-src="http://droidlessons.com/wp-content/uploads/2017/05/person-1824144_960_720-e1494184045144.png" class="md-avatar" />
+            <p> {{ trip.title }} </p>
+            <p> {{ trip.description }} </p>
+            <p> {{ trip.location }} </p>
+            <md-icon class="md-secondary" ng-click="doSecondaryAction($event)" aria-label="Chat"><i class="material-icons">delete_forever</i></md-icon>
+        </md-list-item>
+    </md-list>
+</div>
