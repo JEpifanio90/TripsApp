@@ -18,6 +18,9 @@
         //= require trips-app/utils/directives/nav-header/navheader.directive
         //= require trips-app/utils/modals/login/login.modal.controller
         //= require trips-app/utils/services/request.service
+        //= require trips-app/utils/services/user.account.service
     
     //= require trips-app/pages/login/login.controller
     //= require trips-app/pages/home/home.controller
+    //= require trips-app/pages/trips/trips.controller
+    //= require trips-app/pages/users/users.controller

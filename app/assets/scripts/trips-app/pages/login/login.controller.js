@@ -3,8 +3,8 @@
 
     angular.module('tripsApp').controller('loginController', loginCtrlFn);
 
-    loginCtrlFn.$inject = ['$mdDialog', '$state', 'APP_CONFIG', 'requestService'];
-    function loginCtrlFn($mdDialog, $state, APP_CONFIG, requestService) {
+    loginCtrlFn.$inject = ['$mdDialog', '$state', 'APP_CONFIG', 'requestService', 'userSession'];
+    function loginCtrlFn($mdDialog, $state, APP_CONFIG, requestService, userSession) {
         var loginScope = this;
 
         loginScope.openModal = function(ev) {
@@ -25,7 +25,9 @@
             requestService.url = (data.firstName || data.lastName) ?  APP_CONFIG.USER_ENDPOINT : APP_CONFIG.LOGIN_ENDPOINT;
             requestService.data = (requestService.url === APP_CONFIG.USER_ENDPOINT) ? { user: data } : data;
             requestService.getHttpPromise().then(function(response) {
-                console.log(response);
+                if (response.status === 200) {
+                    userSession.setUserData(response.data);
+                }
                 $state.go('home');
             }).catch(function(error) {
                 console.log(error);

@@ -7,10 +7,13 @@
         SERVER_URL: "<%= ENV['RAILS_API_URL'] %>",
         HOME_VIEW: "<%= asset_path('trips-app/pages/home/home.html') %>",
         LOGIN_VIEW: "<%= asset_path('trips-app/pages/login/login.html') %>",
+        TRIPS_VIEW: "<%= asset_path('trips-app/pages/trips/trips.html') %>",
+        USERS_VIEW: "<%= asset_path('trips-app/pages/users/users.html') %>",
         HEADER_VIEW: "<%= asset_path('trips-app/utils/directives/nav-header/navheader.html') %>",
         LOGIN_MODAL_VIEW: "<%= asset_path('trips-app/utils/modals/login/login.modal.html') %>",
-        USER_ENDPOINT: "/api/users",
-        LOGIN_ENDPOINT: "/api/login"
+        USERS_ENDPOINT: "/api/users",
+        LOGIN_ENDPOINT: "/api/login",
+        TRIPS_ENDPOINT: "/api/trips"
       });
   
   })();

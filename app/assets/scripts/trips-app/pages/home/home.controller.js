@@ -3,8 +3,9 @@
 
     angular.module('tripsApp').controller('homeController', homeCtrlFn);
 
-    homeCtrlFn.$inject = [];
-    function homeCtrlFn() {
+    homeCtrlFn.$inject = ['userSession'];
+    function homeCtrlFn(userSession) {
         var homeScope = this;
+        console.log(userSession);
     }
 })();

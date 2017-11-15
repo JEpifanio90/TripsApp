@@ -1,14 +1,21 @@
 <div>
-    <md-sidenav md-component-id="rightMenu" class="md-sidenav-right">
-        Left Nav!
+<md-toolbar>
+        <div class="md-toolbar-tools" layout="row">
+            <h2 flex="95" class="md-flex">Trips Dashboard</h2>
+            <md-button flex="5" ng-click="headerCtrl.openMenu()">Menu</md-button>
+        </div>
+    </md-toolbar>
+    <md-sidenav md-component-id="rightMenu" class="md-sidenav-right" md-whiteframe="4">
+        <md-toolbar>
+            <h1 class="md-toolbar-tools">Manage trips/Users</h1>
+            <md-content layout-padding layout="column">
+                <md-button ng-click="headerCtrl.openMenu()" ui-sref='trips' class="md-primary">
+                    <span><i class="material-icons">flight</i> Trips</span>
+                </md-button>
+                <md-button ng-click="headerCtrl.openMenu()" ui-sref='users' class="md-primary">
+                    <span><i class="material-icons">group</i> Users</span>
+                </md-button>
+            </md-content>
+        </md-toolbar>
     </md-sidenav>
-
-    <md-content layout="row">
-        <md-button flex-offset="50" flex="25" ng-click="headerCtrl.openMenu()">
-            Sign in!
-        </md-button>
-        <md-button flex="25" ng-click="headerCtrl.openMenu()">
-            Log in!
-        </md-button>
-    </md-content>
 </div>

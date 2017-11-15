@@ -8,6 +8,7 @@
         var requestScope = this;
         requestScope.headers = {};
         requestScope.method = '';
+        requestScope.url = '';
         requestScope.data = {};
 
         requestScope.getHttpPromise = function() {

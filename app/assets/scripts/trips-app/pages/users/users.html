@@ -1,0 +1,13 @@
+<div layout="column">
+    <h1 flex>Account management</h1>
+    <md-container flex>
+        <h2>Selected User:</h2>
+    </md-container>
+    <md-list ng-cloak flex>
+        <md-subheader class="md-no-sticky">Users</md-subheader>
+        <md-list-item ng-repeat="user in userCtrl.users">
+            <p> {{ user.first_name }} {{ user.last_name }} </p>
+            <md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox>
+        </md-list-item>
+    </md-list>
+</div>
