@@ -13,24 +13,24 @@
             <label>Location</label>
             <input ng-model="tripsCtrl.currentTrip.location">
         </md-input-container>
-        <md-button>
+        <md-button ng-if="tripsCtrl.isNewTrip()" ng-click="tripsCtrl.createTrip()">
             <label>Create</label>
         </md-button>
-        <md-button>
+        <md-button ng-if="tripsCtrl.currentTrip && !tripsCtrl.isNewTrip()" ng-click="tripsCtrl.editTrip()">
             <label>Edit</label>
         </md-button>
-        <md-button>
-            <label>Delete</label>
+        <md-button ng-if="tripsCtrl.currentTrip && !tripsCtrl.isNewTrip()" ng-click="tripsCtrl.cancel()">
+            <label>Cancel</label>
         </md-button>
     </md-container>
     <md-list ng-cloak flex>
         <md-subheader class="md-no-sticky">Available trips</md-subheader>
         <md-list-item ng-repeat="trip in tripsCtrl.trips" ng-click="tripsCtrl.setTrip(trip)" class="noright">
             <img alt="{{ trip.title }}" ng-src="http://droidlessons.com/wp-content/uploads/2017/05/person-1824144_960_720-e1494184045144.png" class="md-avatar" />
-            <p> {{ trip.title }} </p>
+            <p> {{ trip.id }} {{ trip.title }} </p>
             <p> {{ trip.description }} </p>
             <p> {{ trip.location }} </p>
-            <md-icon class="md-secondary" ng-click="doSecondaryAction($event)" aria-label="Chat"><i class="material-icons">delete_forever</i></md-icon>
+            <md-icon class="md-secondary" ng-click="tripsCtrl.deleteTrip(trip)" aria-label="Delete"><i class="material-icons">delete_forever</i></md-icon>
         </md-list-item>
     </md-list>
 </div>

@@ -21,10 +21,9 @@
         };
 
         function sendData(data) {
+            requestService.url = (data.firstName || data.lastName) ?  APP_CONFIG.USER_ENDPOINT : APP_CONFIG.LOGIN_ENDPOINT; 
             requestService.prepareService(
                 'POST',
-                (data.firstName || data.lastName) ?  APP_CONFIG.USER_ENDPOINT : APP_CONFIG.LOGIN_ENDPOINT,
-                null,
                 (requestService.url === APP_CONFIG.USER_ENDPOINT) ? { user: data } : data
             );
 
@@ -32,7 +31,7 @@
                 if (response.status === 200) {
                     userSession.setUserData(response.data);
                 }
-                $state.go('home');
+                $state.go('trips');
             }).catch(function(error) {
                 console.log(error);
             });

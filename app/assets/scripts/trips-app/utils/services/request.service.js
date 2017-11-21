@@ -11,12 +11,13 @@
         requestScope.url = '';
         requestScope.data = {};
 
-        requestScope.prepareService = function(method, url, headers, data) {
-            requestScope.headers = headers;
-            requestScope.url = url;
+        requestScope.prepareService = function(method, data, entityId) {
             requestScope.method = method;
             if (data) {
                 requestScope.data = data;
+            }
+            if (entityId) {
+                requestScope.url += '/' + entityId;
             }
         };
 
