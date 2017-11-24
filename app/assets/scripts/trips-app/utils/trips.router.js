@@ -11,7 +11,7 @@
             url: '/login',
             templateUrl: APP_CONFIG.LOGIN_VIEW,
             controller: "loginController",
-            controllerAs: "loginCtrl",
+            controllerAs: "loginCtrl"
         };
 
         var homeState = {
@@ -19,7 +19,7 @@
             url: '/home',
             templateUrl: APP_CONFIG.HOME_VIEW,
             controller: "homeController",
-            controllerAs: "homeCtrl",
+            controllerAs: "homeCtrl"
         };
 
         var tripsState = {
@@ -29,6 +29,11 @@
             templateUrl: APP_CONFIG.TRIPS_VIEW,
             controller: "tripsController",
             controllerAs: "tripsCtrl",
+            resolve: {
+                service: function(requestService, userSession) {
+                    requestService.setService(APP_CONFIG.TRIPS_ENDPOINT, userSession.user.token)
+                }
+            }
         };
 
         var usersState = {
@@ -38,6 +43,11 @@
             templateUrl: APP_CONFIG.USERS_VIEW,
             controller: "usersController",
             controllerAs: "userCtrl",
+            resolve: {
+                service: function(requestService, userSession) {
+                    requestService.setService(APP_CONFIG.USERS_ENDPOINT, userSession.user.token)
+                }
+            }
         };
 
         $stateProvider.state(loginState);

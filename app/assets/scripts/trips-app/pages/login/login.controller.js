@@ -21,13 +21,9 @@
         };
 
         function sendData(data) {
-            requestService.url = (data.firstName || data.lastName) ?  APP_CONFIG.USER_ENDPOINT : APP_CONFIG.LOGIN_ENDPOINT; 
-            requestService.prepareService(
-                'POST',
-                (requestService.url === APP_CONFIG.USER_ENDPOINT) ? { user: data } : data
-            );
-
-            requestService.getHttpPromise().then(function(response) {
+            var newUser = (data.firstName || data.lastName);
+            requestService.setService((newUser) ?  APP_CONFIG.USER_ENDPOINT : APP_CONFIG.LOGIN_ENDPOINT); 
+            requestService.post((newUser) ? { user: data } : data).then(function(response) {
                 if (response.status === 200) {
                     userSession.setUserData(response.data);
                 }

@@ -3,12 +3,11 @@
 
     angular.module('tripsApp').controller('tripsController', tripsCtrlFn);
 
-    tripsCtrlFn.$inject = ['APP_CONFIG', 'requestService', 'userSession'];
-    function tripsCtrlFn(APP_CONFIG, requestService, userSession) {
+    tripsCtrlFn.$inject = ['APP_CONFIG', 'requestService'];
+    function tripsCtrlFn(APP_CONFIG, requestService) {
         var tripScope = this;
         tripScope.trips = [];
         tripScope.currentTrip = null;
-        requestService.headers = { Authorization: userSession.user.token };
         getTrips();
 
         tripScope.setTrip = function(trip) {
@@ -27,7 +26,6 @@
         };
 
         tripScope.editTrip = function() {
-            tripScope.isNewTrip();
             requestService.prepareService('PATCH', tripScope.currentTrip, tripScope.currentTrip.id);
             requestService.getHttpPromise().then(function(response) {
                 if (response.status === 200) {
@@ -54,16 +52,13 @@
         };
 
         tripScope.isNewTrip = function() {
-            console.log(tripScope.trips.indexOf(tripScope.currentTrip) < 0, '--------------');
             return tripScope.trips.indexOf(tripScope.currentTrip) < 0;
         };
 
         function getTrips() {
             tripScope.currentTrip = null;
             tripScope.trips = [];
-            requestService.url = APP_CONFIG.TRIPS_ENDPOINT;
-            requestService.method = 'GET';
-            requestService.getHttpPromise().then(function(response) {
+            requestService.get(true).then(function(response) {
                 if (response.status === 200) {
                     tripScope.trips = response.data;
                 }
