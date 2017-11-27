@@ -1,0 +1,32 @@
+{
+  "name": "tripsapp",
+  "version": "1.0.0",
+  "description": "Module 4 app",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "./node_modules/bower/bin/bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JEpifanio90/TripsApp.git"
+  },
+  "keywords": [
+    "angularjs",
+    "ruby",
+    "rails",
+    "pipeline",
+    "material",
+    "api"
+  ],
+  "author": "Jose Epifanio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JEpifanio90/TripsApp/issues"
+  },
+  "homepage": "https://github.com/JEpifanio90/TripsApp#readme"
+}
