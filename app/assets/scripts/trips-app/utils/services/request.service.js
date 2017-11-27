@@ -7,7 +7,6 @@
     function requestFn($http, APP_CONFIG) {
         var requestScope = this;
         requestScope.request = {};
-        resetService();
 
         requestScope.setService = function(endpoint, authToken) {
             resetService();
@@ -57,9 +56,17 @@
         }
 
         function prepareService(method, entityId, getAll) {
+            cleanUrl();
             requestScope.request.method = method;
-            if (method !== 'POST' || (method === 'GET' && !getAll) && entityId) {
+            if (method !== 'POST' && !getAll) {
                 requestScope.request.url += '/' + entityId;
+            }
+        }
+
+        function cleanUrl() {
+            if (requestScope.request.url.split('/').length > 3)
+            {
+                requestScope.request.url = requestScope.request.url.substring(0, requestScope.request.url.length - (requestScope.request.url.split('/')[3].length + 1));
             }
         }
     }

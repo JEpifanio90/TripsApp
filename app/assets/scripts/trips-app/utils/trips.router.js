@@ -44,6 +44,10 @@
             controller: "usersController",
             controllerAs: "userCtrl",
             resolve: {
+                hasAccess: function($state, userSession) {
+                    if (userSession.user.role !== "Trips Manager" && userSession.user.role !== "master" )
+                        $state.go('trips');
+                },
                 service: function(requestService, userSession) {
                     requestService.setService(APP_CONFIG.USERS_ENDPOINT, userSession.user.token)
                 }

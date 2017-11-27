@@ -15,8 +15,7 @@
         };
 
         tripScope.createTrip = function() {
-            requestService.prepareService('POST', tripScope.currentTrip);
-            requestService.getHttpPromise().then(function(response) {
+            requestService.post(tripScope.currentTrip).then(function(response) {
                 if (response.status === 201) {
                     getTrips();
                 }
@@ -26,8 +25,7 @@
         };
 
         tripScope.editTrip = function() {
-            requestService.prepareService('PATCH', tripScope.currentTrip, tripScope.currentTrip.id);
-            requestService.getHttpPromise().then(function(response) {
+            requestService.patch(tripScope.currentTrip).then(function(response) {
                 if (response.status === 200) {
                     tripScope.currentTrip = null;
                 }
@@ -37,12 +35,11 @@
         };
 
         tripScope.deleteTrip = function(trip) {
-            requestService.prepareService('DELETE', trip.currentTrip, trip.id);
-            requestService.getHttpPromise().then(function(response) {
+            requestService.delete(trip.id).then(function(response) {
                 if (response.status === 204) {
                     getTrips();
                 }
-            }).then(function(error){
+            }).catch(function(error) {
                 console.log(error);
             });
         };
