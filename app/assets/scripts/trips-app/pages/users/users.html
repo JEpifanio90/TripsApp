@@ -1,5 +1,5 @@
 <div layout="column">
-    <md-container flex>
+    <md-container flex ng-hide="!userCtrl.currentUser">
         <h2>Selected User:</h2>
             <md-input-container>
                 <label>First Name</label>
@@ -22,14 +22,14 @@
     </md-container>
     <md-list ng-cloak flex>
         <md-subheader class="md-no-sticky">Available Users</md-subheader>
-        <md-list-item layout="row" ng-repeat="user in userCtrl.users" ng-click="userCtrl.setCurrentUser(user)" class="noright">
-            <img flex="10" alt="{{ user.first_name }}" ng-src="http://droidlessons.com/wp-content/uploads/2017/05/person-1824144_960_720-e1494184045144.png" class="md-avatar" />
-            <p flex="10">{{ user.first_name }}</p>
-            <p flex="10">{{ user.last_name }}</p>
-            <p flex="10">{{ user.email }}</p>
-            <p flex="10">{{ user.role }}</p>
-            <md-checkbox flex="20" class="md-secondary" ng-model="user.access_to_module_8"> Has access to module 8</md-checkbox>
-            <md-icon flex="10" class="md-secondary" ng-click="userCtrl.deleteUser(user)" aria-label="Chat"><i class="material-icons">delete_forever</i></md-icon>
+        <md-list-item ng-repeat="user in userCtrl.users" ng-click="userCtrl.setCurrentUser(user)" class="noright">
+            <img alt="{{ user.first_name }}" ng-src="http://droidlessons.com/wp-content/uploads/2017/05/person-1824144_960_720-e1494184045144.png" class="md-avatar" />
+            <p>{{ user.first_name }}</p>
+            <p>{{ user.last_name }}</p>
+            <p>{{ user.email }}</p>
+            <p>{{ user.role }}</p>
+            <md-checkbox class="md-secondary" ng-model="user.access_to_module_8"> Access To Module 8</md-checkbox>
+            <md-icon class="md-secondary" ng-click="userCtrl.deleteUser(user)" aria-label="Chat"><i class="material-icons">delete_forever</i></md-icon>
         </md-list-item>
     </md-list>
 </div>

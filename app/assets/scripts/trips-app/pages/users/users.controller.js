@@ -5,30 +5,28 @@
 
     usersCtrlFn.$inject = ['APP_CONFIG', 'requestService', 'userSession'];
     function usersCtrlFn(APP_CONFIG, requestService, userSession) {
-        var usersScope = this;
-        usersScope.users = [];
-        usersScope.currentUser = null;
+        var userScope = this;
+        userScope.users = [];
+        userScope.currentUser = null;
         requestService.headers = { Authorization: userSession.user.token };
         getUsers();
 
-        usersScope.setCurrentUser = function(user) {
-            usersScope.currentUser = user;
+        userScope.setCurrentUser = function(user) {
+            userScope.currentUser = user;
         };
 
-        usersScope.editUser = function() {
-            requestService.prepareService('PATCH', usersScope.currentUser, usersScope.currentUser.id);
-            requestService.getHttpPromise().then(function(response) {
+        userScope.editUser = function() {
+            requestService.patch(userScope.currentUser).then(function(response) {
                 if (response.status === 200) {
-                    usersScope.currentUser = null;
+                    userScope.currentUser = null;
                 }
             }).then(function(error){
                 console.log(error);
             });
         };
 
-        usersScope.deleteUser = function(user) {
-            requestService.prepareService('DELETE', user, user.id);
-            requestService.getHttpPromise().then(function(response) {
+        userScope.deleteUser = function(user) {
+            requestService.delete(user.id).then(function(response) {
                 if (response.status === 204) {
                     getUsers();
                 }
@@ -37,22 +35,20 @@
             });
         };
 
-        usersScope.cancel = function() {
-            usersScope.currentUser = null;
+        userScope.cancel = function() {
+            userScope.currentUser = null;
         };
 
-        usersScope.isNewUser = function() {
-            return usersScope.users.indexOf(usersScope.currentUser) < 0;
+        userScope.isNewUser = function() {
+            return userScope.users.indexOf(userScope.currentUser) < 0;
         };
 
         function getUsers()  {
-            usersScope.currentUser = null;
-            usersScope.users = [];
-            requestService.url = APP_CONFIG.USERS_ENDPOINT;
-            requestService.method = 'GET';
-            requestService.getHttpPromise().then(function(response) {
+            userScope.currentUser = null;
+            userScope.users = [];
+            requestService.get(true).then(function(response) {
                 if (response.status === 200) {
-                    usersScope.users = response.data;
+                    userScope.users = response.data;
                 }
             }).catch(function(error) {
                 console.log(error);
