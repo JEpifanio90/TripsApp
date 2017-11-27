@@ -12,7 +12,7 @@
         };
 
         headerScope.isAdmin = function() {
-            return (userSession.user.role !== 'master' || userSession.user.role !== 'Trips Manager');
+            return (userSession.user.role === 'master' || userSession.user.role === 'Trips Manager');
         };
 
         headerScope.resetEverything = function() {

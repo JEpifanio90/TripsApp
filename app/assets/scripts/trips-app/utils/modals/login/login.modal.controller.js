@@ -7,12 +7,12 @@
     function loginModalFn($mdDialog) {
         var loginModalScope = this;
         loginModalScope.user = {
-            firstName: '',
-            lastName: '',
+            first_name: '',
+            last_name: '',
             email: '',
             role: '',
             password: '',
-            passwordConfirmation: ''
+            password_confirmation: ''
         };
         loginModalScope.currentRole = '';
 
@@ -22,6 +22,7 @@
 
         loginModalScope.assignAccountType = function(accountType) {
             loginModalScope.user.role = accountType;
+            loginModalScope.user.isNew = true;
         };
 
         loginModalScope.cancel = function() {

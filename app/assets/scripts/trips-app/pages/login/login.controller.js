@@ -21,13 +21,14 @@
         };
 
         function sendData(data) {
-            var newUser = (data.firstName || data.lastName);
-            requestService.setService((newUser) ?  APP_CONFIG.USER_ENDPOINT : APP_CONFIG.LOGIN_ENDPOINT); 
-            requestService.post((newUser) ? { user: data } : data).then(function(response) {
+            var isNewUser = (data.isNew !== undefined);
+            requestService.setService((isNewUser) ?  APP_CONFIG.USERS_ENDPOINT : APP_CONFIG.LOGIN_ENDPOINT);
+            delete data.isNew;
+            requestService.post((isNewUser) ? { user: data } : data).then(function(response) {
                 if (response.status === 200) {
                     userSession.setUserData(response.data);
+                    $state.go('trips');
                 }
-                $state.go('trips');
             }).catch(function(error) {
                 console.log(error);
             });
