@@ -18,5 +18,5 @@
 !/tmp/.keep
 
 .byebug_history
-
+/node_modules
 /vendor/assets/bower_components
