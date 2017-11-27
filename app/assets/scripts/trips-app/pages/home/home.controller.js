@@ -6,6 +6,5 @@
     homeCtrlFn.$inject = ['userSession'];
     function homeCtrlFn(userSession) {
         var homeScope = this;
-        console.log(userSession);
     }
 })();

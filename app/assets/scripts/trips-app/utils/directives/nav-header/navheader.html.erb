@@ -12,8 +12,11 @@
                 <md-button ng-click="headerCtrl.openMenu()" ui-sref='trips' class="md-primary">
                     <span><i class="material-icons">flight</i> Trips</span>
                 </md-button>
-                <md-button ng-click="headerCtrl.openMenu()" ui-sref='users' class="md-primary">
+                <md-button ng-show="headerCtrl.isAdmin()" ng-click="headerCtrl.openMenu()" ui-sref='users' class="md-primary">
                     <span><i class="material-icons">group</i> Users</span>
+                </md-button>
+                <md-button ng-click="headerCtrl.resetEverything()" ui-sref='login' class="md-primary">
+                    <span><i class="material-icons">exit_to_app</i> Exit</span>
                 </md-button>
             </md-content>
         </md-toolbar>
