@@ -43,6 +43,7 @@ GEM
       rails
     arel (8.0.0)
     bcrypt (3.1.11-x86-mingw32)
+    bower-rails (0.11.0)
     builder (3.2.3)
     byebug (9.1.0)
     coderay (1.1.2)
@@ -195,6 +196,7 @@ PLATFORMS
 DEPENDENCIES
   animate-rails
   bcrypt (~> 3.1.7)
+  bower-rails
   byebug
   coffee-rails
   httparty (~> 0.14, >= 0.14.0)
