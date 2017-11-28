@@ -3,7 +3,7 @@
 
     angular.module('tripsApp').config(routerFn);
 
-    routerFn.$inject = ['$stateProvider', '$urlRouterProvider', 'APP_CONFIG', 'requestService', 'userSession'];
+    routerFn.$inject = ['$stateProvider', '$urlRouterProvider', 'APP_CONFIG'];
     function routerFn($stateProvider, $urlRouterProvider, APP_CONFIG) {
 
         var loginState = {
@@ -30,9 +30,9 @@
             controller: "tripsController",
             controllerAs: "tripsCtrl",
             resolve: {
-                service: function(requestService, userSession) {
+                service: ['requestService', 'userSession', function(requestService, userSession) {
                     requestService.setService(APP_CONFIG.TRIPS_ENDPOINT, userSession.user.token)
-                }
+                }]
             }
         };
 
@@ -48,9 +48,9 @@
                     if (userSession.user.role !== "Trips Manager" && userSession.user.role !== "master" )
                         $state.go('trips');
                 },
-                service: function(requestService, userSession) {
+                service: ['requestService', 'userSession', function(requestService, userSession) {
                     requestService.setService(APP_CONFIG.USERS_ENDPOINT, userSession.user.token)
-                }
+                }]
             }
         };
 
