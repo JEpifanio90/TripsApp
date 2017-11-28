@@ -3,7 +3,7 @@
 
     angular.module('tripsApp').config(routerFn);
 
-    routerFn.$inject = ['$stateProvider', '$urlRouterProvider', 'APP_CONFIG'];
+    routerFn.$inject = ['$stateProvider', '$urlRouterProvider', 'APP_CONFIG', 'requestService', 'userSession'];
     function routerFn($stateProvider, $urlRouterProvider, APP_CONFIG) {
 
         var loginState = {
