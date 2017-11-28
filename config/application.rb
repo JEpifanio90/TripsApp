@@ -19,7 +19,8 @@ Bundler.require(*Rails.groups)
 module TripsApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.autoload_paths << Rails.root.join('lib')
+    # config.autoload_paths << Rails.root.join('lib')
+    config.eager_load_paths << Rails.root.join('lib')
     config.load_defaults 5.1
     config.generators do |g| 
       g.orm :active_record 
