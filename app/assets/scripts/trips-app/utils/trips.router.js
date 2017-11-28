@@ -30,8 +30,10 @@
             controller: "tripsController",
             controllerAs: "tripsCtrl",
             resolve: {
-                service: ['requestService', 'userSession', function(requestService, userSession) {
-                    requestService.setService(APP_CONFIG.TRIPS_ENDPOINT, userSession.user.token)
+                service: ['$state', 'requestService', 'userSession', function($state, requestService, userSession) {
+                    if (userSession.user.role !== "Trips Manager" && userSession.user.role !== "master" )
+                        $state.go('trips');
+                    requestService.setService(APP_CONFIG.TRIPS_ENDPOINT, userSession.user.token);
                 }]
             }
         };
@@ -44,12 +46,10 @@
             controller: "usersController",
             controllerAs: "userCtrl",
             resolve: {
-                hasAccess: function($state, userSession) {
+                service: ['$state', 'requestService', 'userSession', function($state, requestService, userSession) {
                     if (userSession.user.role !== "Trips Manager" && userSession.user.role !== "master" )
                         $state.go('trips');
-                },
-                service: ['requestService', 'userSession', function(requestService, userSession) {
-                    requestService.setService(APP_CONFIG.USERS_ENDPOINT, userSession.user.token)
+                    requestService.setService(APP_CONFIG.USERS_ENDPOINT, userSession.user.token);
                 }]
             }
         };
