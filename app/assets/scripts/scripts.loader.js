@@ -19,6 +19,7 @@
         //= require trips-app/utils/directives/nav-header/navheader.controller
         //= require trips-app/utils/directives/nav-header/navheader.directive
         //= require trips-app/utils/modals/login/login.modal.controller
+        //= require trips-app/utils/services/toast.service
     
     //= require trips-app/pages/login/login.controller
     //= require trips-app/pages/home/home.controller

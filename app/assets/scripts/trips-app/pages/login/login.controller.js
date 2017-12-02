@@ -3,8 +3,8 @@
 
     angular.module('tripsApp').controller('loginController', loginCtrlFn);
 
-    loginCtrlFn.$inject = ['$mdDialog', '$state', 'APP_CONFIG', 'requestService', 'userSession'];
-    function loginCtrlFn($mdDialog, $state, APP_CONFIG, requestService, userSession) {
+    loginCtrlFn.$inject = ['$mdDialog', '$state', 'APP_CONFIG', 'requestService', 'userSession', 'toastService'];
+    function loginCtrlFn($mdDialog, $state, APP_CONFIG, requestService, userSession, toastService) {
         var loginScope = this;
 
         loginScope.openModal = function(ev) {
@@ -26,11 +26,13 @@
             delete data.isNew;
             requestService.post((isNewUser) ? { user: data } : data).then(function(response) {
                 if (response.status === 200) {
+                    toastService.show('verified_user', 'Successful login!');
                     userSession.setUserData(response.data);
                     $state.go('trips');
                 }
             }).catch(function(error) {
                 console.log(error);
+                toastService.show('pan_tool', error.statusText);
             });
         }
     }
