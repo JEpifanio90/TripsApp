@@ -54,8 +54,23 @@
             }
         };
 
+        var dashboard = {
+            parent: 'home',
+            name: 'dashboard',
+            url: '/dashboard',
+            templateUrl: APP_CONFIG.DASHBOARD_VIEW,
+            controller: 'dashboardController',
+            controllerAs: 'dashCtrl',
+            resolve: {
+                service: ['requestService', 'userSession', function(requestService, userSession) {
+                    requestService.setService(APP_CONFIG.USERS_ENDPOINT, userSession.user.token);
+                }]
+            }
+        };
+
         $stateProvider.state(loginState);
         $stateProvider.state(homeState);
+        $stateProvider.state(dashboard);
         $stateProvider.state(tripsState);
         $stateProvider.state(usersState);
         $urlRouterProvider.otherwise('/login');

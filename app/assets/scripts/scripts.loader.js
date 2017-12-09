@@ -25,3 +25,4 @@
     //= require trips-app/pages/home/home.controller
     //= require trips-app/pages/trips/trips.controller
     //= require trips-app/pages/users/users.controller
+    //= require trips-app/pages/dashboard/dashboard.controller
