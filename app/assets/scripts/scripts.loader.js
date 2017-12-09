@@ -7,6 +7,7 @@
     //= require angular-aria/angular-aria
     //= require angular-animate/angular-animate
     //= require angular-material/angular-material
+    //= require ngmap/build/scripts/ng-map.min.js
 
 // Webapp code
     //= require trips-app/trips.module
