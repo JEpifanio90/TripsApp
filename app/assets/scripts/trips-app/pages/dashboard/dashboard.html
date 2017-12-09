@@ -1,5 +1,5 @@
-<md-content>
-    <md-list flex>
+<md-content layout="row">
+    <md-list flex="30">
         <md-subheader class="md-no-sticky">3 line item (with hover)</md-subheader>
         <md-list-item class="md-3-line" ng-click="null">
           <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
@@ -10,4 +10,7 @@
           </div>
         </md-list-item>
     </md-list>
+    <md-content fle="70">
+        <h1>Here goes the map</h1>
+    </md-content>
 </md-content>
