@@ -1,5 +1,5 @@
-<md-content layout="row">
-    <md-list flex="30">
+<md-content layout="row" class="full-height">
+    <md-list flex="30" class="full-height">
         <md-subheader class="md-no-sticky">3 line item (with hover)</md-subheader>
         <md-list-item class="md-3-line" ng-click="null">
           <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
@@ -10,10 +10,7 @@
           </div>
         </md-list-item>
     </md-list>
-    <md-content flex="70">
-        <!-- <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{dashCtrl.apiKey}}">
-            
-        </div> -->
-        <ng-map center="41,-87" zoom="3"></ng-map>
+    <md-content flex="70" class="full-height">
+        <ng-map center="41,-87" zoom="3" class="full-height"></ng-map>
     </md-content>
 </md-content>
