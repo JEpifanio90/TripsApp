@@ -3,35 +3,43 @@
 
     angular.module('tripsApp').controller('tripsController', tripsCtrlFn);
 
-    tripsCtrlFn.$inject = ['APP_CONFIG', 'requestService'];
-    function tripsCtrlFn(APP_CONFIG, requestService) {
+    tripsCtrlFn.$inject = ['$mdDialog', 'APP_CONFIG', 'requestService'];
+    function tripsCtrlFn($mdDialog, APP_CONFIG, requestService) {
         var tripScope = this;
         tripScope.trips = [];
         tripScope.currentTrip = null;
         getTrips();
 
-        tripScope.setTrip = function(trip) {
-            tripScope.currentTrip = trip;
-        };
-
-        tripScope.createTrip = function() {
-            requestService.post(tripScope.currentTrip).then(function(response) {
-                if (response.status === 201) {
-                    getTrips();
-                }
-            }).then(function(error){
-                console.log(error);
-            });
+        tripScope.createTrip = function(ev) {
+            $mdDialog.show({
+                controller: 'newTripController',
+                controllerAs: 'newTripCtrl',
+                templateUrl: APP_CONFIG.NEW_TRIP_MODAL_VIEW,
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true,
+                escapeToClose: true
+            }).then(function(answer) {
+                // sendData(answer);
+            }, function() { });
+            // requestService.post(tripScope.currentTrip).then(function(response) {
+            //     if (response.status === 201) {
+            //         getTrips();
+            //     }
+            // }).then(function(error){
+            //     console.log(error);
+            // });
         };
 
         tripScope.editTrip = function() {
-            requestService.patch(tripScope.currentTrip).then(function(response) {
-                if (response.status === 200) {
-                    tripScope.currentTrip = null;
-                }
-            }).then(function(error){
-                console.log(error);
-            });
+            // locals: 
+            // requestService.patch(tripScope.currentTrip).then(function(response) {
+            //     if (response.status === 200) {
+            //         tripScope.currentTrip = null;
+            //     }
+            // }).then(function(error){
+            //     console.log(error);
+            // });
         };
 
         tripScope.deleteTrip = function(trip) {
@@ -46,10 +54,6 @@
 
         tripScope.cancel = function() {
             tripScope.currentTrip = null;
-        };
-
-        tripScope.isNewTrip = function() {
-            return tripScope.trips.indexOf(tripScope.currentTrip) < 0;
         };
 
         function getTrips() {

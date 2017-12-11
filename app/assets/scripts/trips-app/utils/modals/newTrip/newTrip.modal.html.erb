@@ -1,0 +1,63 @@
+<md-dialog aria-label="New trip Modal">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>New Trip</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="newTripCtrl.cancel()">
+                    <md-icon aria-label="Close dialog"><%= image_tag("close_icon.png", :alt => "icon", size: "24x24") %></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content style="overflow: hidden; margin: 0 15px 0 15px;">
+            <div layout="column">
+                <div flex="7" layout="row">
+                    <md-icon class="material-icons" style="display:inline-block;">create</md-icon>
+                    <md-input-container flex style="margin-bottom: 0px;">
+                        <label>Title</label>
+                        <input ng-model="newTripCtrl.trip.title">
+                    </md-input-container>
+                    <md-input-container flex style="margin-bottom: 0px;">
+                        <label>description</label>
+                        <input ng-model="newTripCtrl.trip.description">
+                    </md-input-container>
+                </div>
+                <div flex="7" layout="row">
+                    <md-icon class="material-icons" style="display:inline-block;">add_location</md-icon>
+                    <md-input-container flex style="margin-bottom: 0px;">
+                        <label>longitude</label>
+                        <input ng-model="newTripCtrl.trip.lng" type="number">
+                    </md-input-container>
+                    <md-input-container flex style="margin-bottom: 0px;">
+                        <label>Latitude</label>
+                        <input ng-model="newTripCtrl.trip.lat" type="number">
+                    </md-input-container>
+                </div>
+                <div flex="7" layout="row">
+                    <md-icon class="material-icons" style="display:inline-block;">add_a_photo</md-icon>
+                    <md-input-container flex style="margin-bottom: 0px;">
+                        <label>Image</label>
+                        <input ng-model="newTripCtrl.trip.blobImage" type="image">
+                    </md-input-container>
+                    <img style="width=60px; height: 60px;" ng-src="https://images.unsplash.com/photo-1434600705575-4285a88363a8?dpr=1&auto=format&fit=crop&w=376&h=250&q=60&cs=tinysrgb&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
+                </div>
+                <md-input-container flex="7" style="margin: 0;">
+                    <md-icon class="material-icons" style="display:inline-block;">search</md-icon>
+                    <label>Search in the map</label>
+                    <input ng-model="newTripCtrl.searchQuery" ng-change="newTripCtrl.searchLocation(newTripCtrl.searchQuery)">
+                </md-input-container>
+                <ng-map id="tripMap" flex= "60" style="height: 170px;" center="{{ newTripCtrl.searchQuery }}" zoom="5">
+                    <marker animation="DROP" centered="true" position="{{ newTripCtrl.trip.lat }}, {{ newTripCtrl.trip.lng }}" ></marker>
+                </ng-map>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="newTripCtrl.cancel()" >
+              Cancel
+            </md-button>
+            <md-button ng-click="newTripCtrl.sendCredentials()" style="margin-right:20px;" >
+              Save
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

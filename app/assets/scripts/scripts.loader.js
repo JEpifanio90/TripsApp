@@ -16,11 +16,12 @@
         //= require trips-app/utils/constants
         //= require trips-app/utils/services/request.service
         //= require trips-app/utils/services/user.account.service
+        //= require trips-app/utils/services/toast.service
         //= require trips-app/utils/trips.router
         //= require trips-app/utils/directives/nav-header/navheader.controller
         //= require trips-app/utils/directives/nav-header/navheader.directive
         //= require trips-app/utils/modals/login/login.modal.controller
-        //= require trips-app/utils/services/toast.service
+        //= require trips-app/utils/modals/newTrip/newTrip.modal.controller
     
     //= require trips-app/pages/login/login.controller
     //= require trips-app/pages/home/home.controller
