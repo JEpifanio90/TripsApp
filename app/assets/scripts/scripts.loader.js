@@ -8,6 +8,7 @@
     //= require angular-animate/angular-animate
     //= require angular-material/angular-material
     //= require ngmap/build/scripts/ng-map.min.js
+    //= require angular-file-upload/dist/angular-file-upload.min.js
 
 // Webapp code
     //= require trips-app/trips.module
@@ -20,6 +21,7 @@
         //= require trips-app/utils/trips.router
         //= require trips-app/utils/directives/nav-header/navheader.controller
         //= require trips-app/utils/directives/nav-header/navheader.directive
+        //= require trips-app/utils/directives/ng-thumb/ngThumb.directive
         //= require trips-app/utils/modals/login/login.modal.controller
         //= require trips-app/utils/modals/newTrip/newTrip.modal.controller
     

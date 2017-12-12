@@ -1,8 +1,7 @@
 class CreateImages < ActiveRecord::Migration[5.1]
   def change
     create_table :images do |t|
-      t.integer :owner_id
-      t.string :src
+      t.string :content
 
       t.timestamps
     end

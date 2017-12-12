@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :email
       t.string :password_digest
       t.string :role
-      t.boolean :access_to_module_8
+      t.integer :image_id
 
       t.timestamps
     end
