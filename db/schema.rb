@@ -16,8 +16,7 @@ ActiveRecord::Schema.define(version: 20171113170154) do
   enable_extension "plpgsql"
 
   create_table "images", force: :cascade do |t|
-    t.integer "owner_id"
-    t.string "src"
+    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,6 +26,8 @@ ActiveRecord::Schema.define(version: 20171113170154) do
     t.string "title"
     t.string "description"
     t.string "location"
+    t.integer "lng"
+    t.integer "lat"
     t.integer "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,7 +39,7 @@ ActiveRecord::Schema.define(version: 20171113170154) do
     t.string "email"
     t.string "password_digest"
     t.string "role"
-    t.boolean "access_to_module_8"
+    t.integer "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -11,35 +11,12 @@
         getTrips();
 
         tripScope.createTrip = function(ev) {
-            $mdDialog.show({
-                controller: 'newTripController',
-                controllerAs: 'newTripCtrl',
-                templateUrl: APP_CONFIG.NEW_TRIP_MODAL_VIEW,
-                parent: angular.element(document.body),
-                targetEvent: ev,
-                clickOutsideToClose: true,
-                escapeToClose: true
-            }).then(function(answer) {
-                // sendData(answer);
-            }, function() { });
-            // requestService.post(tripScope.currentTrip).then(function(response) {
-            //     if (response.status === 201) {
-            //         getTrips();
-            //     }
-            // }).then(function(error){
-            //     console.log(error);
-            // });
+            showModal('POST', 'tripController', 'tripCtrl', ev);
         };
 
-        tripScope.editTrip = function() {
+        tripScope.editTrip = function(ev) {
             // locals: 
-            // requestService.patch(tripScope.currentTrip).then(function(response) {
-            //     if (response.status === 200) {
-            //         tripScope.currentTrip = null;
-            //     }
-            // }).then(function(error){
-            //     console.log(error);
-            // });
+            showModal('PATCH', 'tripController', 'tripCtrl', ev);
         };
 
         tripScope.deleteTrip = function(trip) {
@@ -56,6 +33,25 @@
             tripScope.currentTrip = null;
         };
 
+        function showModal(method, controller, controllerAlias, ev, params) {
+            var modalOptions = {
+                controller: controller,
+                controllerAs: controllerAlias,
+                templateUrl: APP_CONFIG.NEW_TRIP_MODAL_VIEW,
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true,
+                escapeToClose: true
+            };
+
+            if (params)
+                modalOptions.locals = params;
+
+            $mdDialog.show(modalOptions).then(function(trip) {
+                sendData(method, trip);
+            }, function() { });
+        }
+
         function getTrips() {
             tripScope.currentTrip = null;
             tripScope.trips = [];
@@ -66,6 +62,30 @@
             }).catch(function(error) {
                 console.log(error);
             });
+        }
+
+        function sendData(method, trip) {
+            switch (method) {
+                case 'POST':
+                    requestService.post(trip).then(function(response) {
+                        if (response.status === 201) {
+                            getTrips();
+                        }
+                    }).then(function(error){
+                        console.log(error);
+                    });
+                break;
+
+                case 'PATCH':
+                    requestService.patch(trip).then(function(response) {
+                        if (response.status === 200) {
+                            tripScope.currentTrip = null;
+                        }
+                    }).then(function(error){
+                        console.log(error);
+                    });
+                break;
+            }
         }
     }
 })();

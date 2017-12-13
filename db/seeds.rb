@@ -14,8 +14,7 @@ User.create(
             email: 'test.subject01@gmail.com',
             password: 'asdqwe123',
             password_confirmation: 'asdqwe123',
-            role: 'master',
-            access_to_module_8: true
+            role: 'master'
         }, 
         {
             first_name: 'test',
@@ -23,8 +22,7 @@ User.create(
             email: 'test.subject02@gmail.com',
             password: 'asdqwe123',
             password_confirmation: 'asdqwe123',
-            role: 'Trips Advisor',
-            access_to_module_8: false
+            role: 'Trips Advisor'
         },
         {
             first_name: 'test',
@@ -32,8 +30,7 @@ User.create(
             email: 'test.subject03@gmail.com',
             password: 'asdqwe123',
             password_confirmation: 'asdqwe123',
-            role: 'Trips Manager',
-            access_to_module_8: false
+            role: 'Trips Manager'
         },
         {
             first_name: 'test',
@@ -41,8 +38,7 @@ User.create(
             email: 'test.subject04@gmail.com',
             password: 'asdqwe123',
             password_confirmation: 'asdqwe123',
-            role: 'Trips Advisor',
-            access_to_module_8: false
+            role: 'Trips Advisor'
         },
         {
             first_name: 'test',
@@ -50,8 +46,7 @@ User.create(
             email: 'test.subject05@gmail.com',
             password: 'asdqwe123',
             password_confirmation: 'asdqwe123',
-            role: 'Trips Manager',
-            access_to_module_8: false
+            role: 'Trips Manager'
         }
     ]
 )
@@ -63,6 +58,8 @@ Trip.create(
             title: 'trip 01',
             description: 'trip description 01',
             location: 'Mexico',
+            lat: 23.6345,
+            lng: 102.5528,
             image_id: 1
         },
         {
@@ -70,6 +67,8 @@ Trip.create(
             title: 'trip 02',
             description: 'trip description 02',
             location: 'Mexico',
+            lat: 23.6345,
+            lng: 102.5528,
             image_id: 1
         },
         {
@@ -77,6 +76,8 @@ Trip.create(
             title: 'trip 03',
             description: 'trip description 03',
             location: 'Mexico',
+            lat: 23.6345,
+            lng: 102.5528,
             image_id: 1
         },
         {
@@ -84,6 +85,8 @@ Trip.create(
             title: 'trip 04',
             description: 'trip description 04',
             location: 'Mexico',
+            lat: 23.6345,
+            lng: 102.5528,
             image_id: 1
         }
     ]

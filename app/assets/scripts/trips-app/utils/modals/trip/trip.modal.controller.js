@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('tripsApp').controller('newTripController', newTripCtrlFn);
+    angular.module('tripsApp').controller('tripController', newTripCtrlFn);
 
     newTripCtrlFn.$inject = ['$mdDialog', 'NgMap', 'FileUploader', 'userSession'];
     function newTripCtrlFn($mdDialog, NgMap, FileUploader, userSession) {
@@ -41,6 +41,7 @@
         };
 
         newTripScope.hide = function() {
+            newTripScope.trip.location = newTripScope.searchQuery;
             $mdDialog.hide(newTripScope.trip);
         };
 

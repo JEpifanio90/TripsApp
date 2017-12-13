@@ -4,7 +4,7 @@
             <div class="md-toolbar-tools">
                 <h2>New Trip</h2>
                 <span flex></span>
-                <md-button class="md-icon-button" ng-click="newTripCtrl.cancel()">
+                <md-button class="md-icon-button" ng-click="tripCtrl.cancel()">
                     <md-icon aria-label="Close dialog"><%= image_tag("close_icon.png", :alt => "icon", size: "24x24") %></md-icon>
                 </md-button>
             </div>
@@ -15,33 +15,33 @@
                     <md-icon class="material-icons" style="display:inline-block; margin-top: 22px">create</md-icon>
                     <md-input-container flex style="margin-bottom: 0px;">
                         <label>Title</label>
-                        <input ng-model="newTripCtrl.trip.title">
+                        <input ng-model="tripCtrl.trip.title">
                     </md-input-container>
                     <md-input-container flex style="margin-bottom: 0px;">
                         <label>description</label>
-                        <input ng-model="newTripCtrl.trip.description">
+                        <input ng-model="tripCtrl.trip.description">
                     </md-input-container>
                 </div>
                 <div flex="33" layout="row">
                     <md-icon class="material-icons" style="display:inline-block; margin-top: 22px">add_location</md-icon>
                     <md-input-container flex style="margin-bottom: 0px;">
                         <label>longitude</label>
-                        <input ng-model="newTripCtrl.trip.lng" type="number">
+                        <input ng-model="tripCtrl.trip.lng" type="number">
                     </md-input-container>
                     <md-input-container flex style="margin-bottom: 0px;">
                         <label>Latitude</label>
-                        <input ng-model="newTripCtrl.trip.lat" type="number">
+                        <input ng-model="tripCtrl.trip.lat" type="number">
                     </md-input-container>
                 </div>
                 <div flex="34" layout="row">
                     <div flex="70" layout="column">
-                        <input id="input-file-id" class="ng-hide" nv-file-select type="file" uploader="newTripCtrl.uploader"/><br/>
+                        <input id="input-file-id" class="ng-hide" nv-file-select type="file" uploader="tripCtrl.uploader"/><br/>
                         <label flex class="md-button md-raised md-primary" for="input-file-id">
                             <md-icon class="material-icons" style="display:inline-block; margin: 0 2px 5px 0;">add_a_photo</md-icon>
                             Upload image
                         </label>
                     </div>
-                    <div flex="30" ng-repeat="item in newTripCtrl.uploader.queue" ng-click="item.remove()">
+                    <div flex="30" ng-repeat="item in tripCtrl.uploader.queue" ng-click="item.remove()">
                         <div ng-thumb="{ file: item._file, width: 70, height: 70 }" class="file_thumb"><canvas></canvas></div>
                     </div>
                 </div>
@@ -50,26 +50,26 @@
                 <md-input-container flex="20" style="margin-bottom: 0;">
                     <md-icon class="material-icons" style="display:inline-block;">search</md-icon>
                     <label>Search in the map</label>
-                    <input ng-model="newTripCtrl.searchQuery" ng-change="newTripCtrl.searchLocation(newTripCtrl.searchQuery)">
+                    <input ng-model="tripCtrl.searchQuery" ng-change="tripCtrl.searchLocation(tripCtrl.searchQuery)">
                 </md-input-container>
                 <ng-map
                     id="tripMap"
                     flex="80"
-                    center="{{ newTripCtrl.searchQuery }}"
+                    center="{{ tripCtrl.searchQuery }}"
                     zoom="5"
                     zoom-control="true"
                     zoom-control-options="{style:'SMALL', position:'LEFT_CENTER'}"
                     scale-control="true"
                 >
-                    <marker animation="DROP" centered="true" position="{{ newTripCtrl.trip.lat }}, {{ newTripCtrl.trip.lng }}" ></marker>
+                    <marker animation="DROP" centered="true" position="{{ tripCtrl.trip.lat }}, {{ tripCtrl.trip.lng }}" ></marker>
                 </ng-map>
             </div>
         </md-dialog-content>
         <md-dialog-actions layout="row">
-            <md-button ng-click="newTripCtrl.cancel()" >
+            <md-button ng-click="tripCtrl.cancel()" >
               Cancel
             </md-button>
-            <md-button ng-click="newTripCtrl.hide()" style="margin-right:20px;" >
+            <md-button ng-click="tripCtrl.hide()" style="margin-right:20px;" >
               Save
             </md-button>
         </md-dialog-actions>
