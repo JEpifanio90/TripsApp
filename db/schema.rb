@@ -16,7 +16,10 @@ ActiveRecord::Schema.define(version: 20171113170154) do
   enable_extension "plpgsql"
 
   create_table "images", force: :cascade do |t|
-    t.string "content"
+    t.string "name"
+    t.string "content_type"
+    t.integer "file_size"
+    t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

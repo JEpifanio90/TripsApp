@@ -16,12 +16,22 @@ class ImagesController < ApplicationController
 
   # POST /images
   def create
-    @image = Image.new(image_params)
+    image = Image.new
+    image_object = params[:image]
+    image.name = image_object.original_filename
+    image.content_type = image_object.content_type
+    image.file_size = image_object.size
+    if image.save
+      file_name_system = image.id.to_s + image_object.original_filename
+      image.location = Rails.root.join('public', 'images', file_name_system) 
+      File.open(image.location, 'wb') do |file|
+        file.write(image_object.read)
+      end
 
-    if @image.save
-      render json: @image, status: :created
+      # image.save
+      render json: image, status: :ok
     else
-      render json: @image.errors, status: :unprocessable_entity
+      render json: image.errors, status: :unprocessable_entity
     end
   end
 
@@ -40,13 +50,8 @@ class ImagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_image
-      @image = Image.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
-      params.require(:image).permit(:owner_id, :src)
+      params.require(:image).permit(:file, :@tempfile, :@original_filename, :@content_type, :@headers, :filename)
     end
 end

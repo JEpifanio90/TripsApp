@@ -19,13 +19,18 @@
                 Authorization: userSession.user.token
             },
             autoUpload: true,
-            withCredentials: true
+            withCredentials: true,
+            queueLimit: 1
         });
         newTripScope.searchQuery = 'Mexico';
         newTripScope.mapInstance = null;
 
+        newTripScope.uploader.onBeforeUploadItem = function(item) {
+            newTripScope.uploader.queue[0].alias = 'image';
+        };
+
         newTripScope.uploader.onSuccessItem = function(fileItem, response, status, headers) {
-            console.info('onSuccessItem', fileItem, response, status, headers);
+            console.info('fileItem: ', fileItem, '\n Response: ', response, '\n Status: ', status, '\n headers: ', headers, '\n');
         };
 
         newTripScope.searchLocation = function(address) {
