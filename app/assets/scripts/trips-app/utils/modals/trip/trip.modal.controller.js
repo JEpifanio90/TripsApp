@@ -3,13 +3,14 @@
 
     angular.module('tripsApp').controller('tripController', newTripCtrlFn);
 
-    newTripCtrlFn.$inject = ['$mdDialog', 'NgMap', 'FileUploader', 'userSession'];
-    function newTripCtrlFn($mdDialog, NgMap, FileUploader, userSession) {
+    newTripCtrlFn.$inject = ['$mdDialog', 'NgMap', 'FileUploader', 'userSession', 'currentTrip'];
+    function newTripCtrlFn($mdDialog, NgMap, FileUploader, userSession, currentTrip) {
         var newTripScope = this;
-        newTripScope.trip = {
+        console.log(currentTrip, '----------------');
+        newTripScope.trip = (currentTrip) ? currentTrip : {
             title: '',
             description: '',
-            image: '',
+            image_id: 0,
             lng: 0,
             lat: 0
         };
@@ -30,7 +31,7 @@
         };
 
         newTripScope.uploader.onSuccessItem = function(fileItem, response, status, headers) {
-            console.info('fileItem: ', fileItem, '\n Response: ', response, '\n Status: ', status, '\n headers: ', headers, '\n');
+            newTripScope.trip.image_id = response.id;
         };
 
         newTripScope.searchLocation = function(address) {

@@ -5,8 +5,8 @@ class CreateTrips < ActiveRecord::Migration[5.1]
       t.string :title
       t.string :description
       t.string :location
-      t.integer :lng
-      t.integer :lat
+      t.float :lng
+      t.float :lat
       t.integer :image_id
 
       t.timestamps

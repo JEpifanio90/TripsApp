@@ -6,7 +6,7 @@
     </md-container>
     <md-list ng-cloak flex="100">
         <md-subheader class="md-no-sticky">Available trips</md-subheader>
-        <md-list-item layout="row" ng-repeat="trip in tripsCtrl.trips" ng-click="tripsCtrl.editTrip()" class="noright">
+        <md-list-item layout="row" ng-repeat="trip in tripsCtrl.trips" ng-click="tripsCtrl.editTrip(trip)" class="noright">
             <img flex="10" alt="{{ trip.title }}" ng-src="http://droidlessons.com/wp-content/uploads/2017/05/person-1824144_960_720-e1494184045144.png" class="md-avatar" />
             <p flex="20"> {{ trip.title }} </p>
             <p flex="40"> {{ trip.description }} </p>

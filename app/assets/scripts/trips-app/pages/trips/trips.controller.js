@@ -10,13 +10,12 @@
         tripScope.currentTrip = null;
         getTrips();
 
-        tripScope.createTrip = function(ev) {
-            showModal('POST', 'tripController', 'tripCtrl', ev);
+        tripScope.createTrip = function() {
+            showModal('POST', 'tripController', 'tripCtrl');
         };
 
-        tripScope.editTrip = function(ev) {
-            // locals: 
-            showModal('PATCH', 'tripController', 'tripCtrl', ev);
+        tripScope.editTrip = function(trip) {
+            showModal('PATCH', 'tripController', 'tripCtrl', undefined, trip);
         };
 
         tripScope.deleteTrip = function(trip) {
@@ -45,8 +44,8 @@
             };
 
             if (params)
-                modalOptions.locals = params;
-
+                modalOptions.locals = { currentTrip: params };
+            console.log(modalOptions);
             $mdDialog.show(modalOptions).then(function(trip) {
                 sendData(method, trip);
             }, function() { });

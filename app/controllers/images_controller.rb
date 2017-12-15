@@ -28,7 +28,7 @@ class ImagesController < ApplicationController
         file.write(image_object.read)
       end
 
-      # image.save
+      image.save
       render json: image, status: :ok
     else
       render json: image.errors, status: :unprocessable_entity
@@ -38,7 +38,7 @@ class ImagesController < ApplicationController
   # PATCH/PUT /images/1
   def update
     if @image.update(image_params)
-      render json: @image, status: :ok
+      render json: @image, status: :created
     else
       render json: @image.errors, status: :unprocessable_entity
     end
@@ -52,6 +52,6 @@ class ImagesController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
-      params.require(:image).permit(:file, :@tempfile, :@original_filename, :@content_type, :@headers, :filename)
+      params.require(:image).permit(:format, :controller, :action)
     end
 end

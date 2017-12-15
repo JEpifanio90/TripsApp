@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 20171113170154) do
     t.string "title"
     t.string "description"
     t.string "location"
-    t.integer "lng"
-    t.integer "lat"
+    t.float "lng"
+    t.float "lat"
     t.integer "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
