@@ -16,6 +16,7 @@
                         <h1 class="md-display-5" style="margin-bottom: 0px;">Account Info</h1>
                         <div layout="column">
                             <div flex layout="row">
+                                <md-icon class="material-icons" style="display:inline-block; margin-top: 22px">create</md-icon>
                                 <md-input-container flex style="margin-bottom: 0px;">
                                     <label>First Name</label>
                                     <input ng-model="loginCtrl.user.first_name">
@@ -26,10 +27,12 @@
                                 </md-input-container>
                             </div>
                             <md-input-container flex style="margin-bottom: 0px;">
+                                <md-icon class="material-icons" style="display:inline-block;">email</md-icon>
                                 <label>Email</label>
                                 <input ng-model="loginCtrl.user.email">
                             </md-input-container>
                             <div flex layout="row">
+                                <md-icon class="material-icons" style="display:inline-block; margin-top: 22px">security</md-icon>
                                 <md-input-container flex style="margin-bottom: 0px;">
                                     <label>Password</label>
                                     <input ng-model="loginCtrl.user.password" type="password">

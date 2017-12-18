@@ -3,26 +3,19 @@
 
     angular.module('tripsApp').controller('usersController', usersCtrlFn);
 
-    usersCtrlFn.$inject = ['APP_CONFIG', 'requestService', 'userSession'];
-    function usersCtrlFn(APP_CONFIG, requestService, userSession) {
+    usersCtrlFn.$inject = ['$mdDialog', 'APP_CONFIG', 'requestService', 'userSession'];
+    function usersCtrlFn($mdDialog, APP_CONFIG, requestService, userSession) {
         var userScope = this;
         userScope.users = [];
-        userScope.currentUser = null;
         requestService.headers = { Authorization: userSession.user.token };
         getUsers();
 
-        userScope.setCurrentUser = function(user) {
-            userScope.currentUser = user;
+        userScope.newUser = function() {
+            showModal('POST', 'userController', 'userCtrl', undefined, false);
         };
 
-        userScope.editUser = function() {
-            requestService.patch(userScope.currentUser).then(function(response) {
-                if (response.status === 200) {
-                    userScope.currentUser = null;
-                }
-            }).then(function(error){
-                console.log(error);
-            });
+        userScope.editUser = function(user) {
+            showModal('PATCH', 'userController', 'userCtrl', undefined, user);
         };
 
         userScope.deleteUser = function(user) {
@@ -39,10 +32,6 @@
             userScope.currentUser = null;
         };
 
-        userScope.isNewUser = function() {
-            return userScope.users.indexOf(userScope.currentUser) < 0;
-        };
-
         function getUsers()  {
             userScope.currentUser = null;
             userScope.users = [];
@@ -53,6 +42,47 @@
             }).catch(function(error) {
                 console.log(error);
             });
+        }
+
+        function showModal(method, controller, controllerAlias, ev, params) {
+            var modalOptions = {
+                controller: controller,
+                controllerAs: controllerAlias,
+                templateUrl: APP_CONFIG.USER_MODAL_VIEW,
+                parent: angular.element(document.body),
+                locals: { currentUser: params },
+                targetEvent: ev,
+                clickOutsideToClose: true,
+                escapeToClose: true
+            };
+
+            $mdDialog.show(modalOptions).then(function(user) {
+                sendData(method, user);
+            }, function() { });
+        }
+
+        function sendData(method, user) {
+            switch (method) {
+                case 'POST':
+                    requestService.post(user).then(function(response) {
+                        if (response.status === 201) {
+                            getUsers();
+                        }
+                    }).then(function(error){
+                        console.log(error);
+                    });
+                break;
+
+                case 'PATCH':
+                    requestService.patch(user).then(function(response) {
+                        if (response.status === 200) {
+                            getUsers();
+                        }
+                    }).then(function(error){
+                        console.log(error);
+                    });
+                break;
+            }
         }
     }
 })();

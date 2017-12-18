@@ -6,7 +6,6 @@
     newTripCtrlFn.$inject = ['$mdDialog', 'NgMap', 'FileUploader', 'userSession', 'currentTrip'];
     function newTripCtrlFn($mdDialog, NgMap, FileUploader, userSession, currentTrip) {
         var newTripScope = this;
-        console.log(currentTrip, '----------------');
         newTripScope.trip = (currentTrip) ? currentTrip : {
             title: '',
             description: '',

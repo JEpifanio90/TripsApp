@@ -11,7 +11,7 @@
         getTrips();
 
         tripScope.createTrip = function() {
-            showModal('POST', 'tripController', 'tripCtrl');
+            showModal('POST', 'tripController', 'tripCtrl', undefined, false);
         };
 
         tripScope.editTrip = function(trip) {
@@ -36,16 +36,14 @@
             var modalOptions = {
                 controller: controller,
                 controllerAs: controllerAlias,
-                templateUrl: APP_CONFIG.NEW_TRIP_MODAL_VIEW,
+                templateUrl: APP_CONFIG.TRIP_MODAL_VIEW,
                 parent: angular.element(document.body),
+                locals: { currentTrip: params },
                 targetEvent: ev,
                 clickOutsideToClose: true,
                 escapeToClose: true
             };
 
-            if (params)
-                modalOptions.locals = { currentTrip: params };
-            console.log(modalOptions);
             $mdDialog.show(modalOptions).then(function(trip) {
                 sendData(method, trip);
             }, function() { });

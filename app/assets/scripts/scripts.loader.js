@@ -24,6 +24,7 @@
         //= require trips-app/utils/directives/ngThumb/ngThumb.directive
         //= require trips-app/utils/modals/login/login.modal.controller
         //= require trips-app/utils/modals/trip/trip.modal.controller
+        //= require trips-app/utils/modals/user/user.modal.controller
     
     //= require trips-app/pages/login/login.controller
     //= require trips-app/pages/home/home.controller
