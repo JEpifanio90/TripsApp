@@ -13,7 +13,7 @@
             role: '',
             password: '',
             password_confirmation: '',
-            image_id: 0
+            image_name: ''
         };
         userScope.uploader = new FileUploader({
             url: 'http://localhost:3000/api/images',
@@ -30,7 +30,7 @@
         };
 
         userScope.uploader.onSuccessItem = function(fileItem, response, status, headers) {
-            userScope.userInfo.image_id = response.id;
+            userScope.userInfo.image_name = response.name;
         };
 
         userScope.setRole = function(role) {
@@ -42,7 +42,7 @@
         };
 
         userScope.hide = function() {
-            $mdDialog.hide({ user: userScope.userInfo});
+            $mdDialog.hide((!currentUser) ? { user: userScope.userInfo} : userScope.userInfo);
         };
     }
 })();

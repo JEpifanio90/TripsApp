@@ -5,7 +5,7 @@ class TripsController < ApplicationController
   # GET /trips
   def index
     @trips = Trip.all
-    
+
     render json: @trips, status: :ok
   end
 

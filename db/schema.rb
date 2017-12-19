@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20171113170154) do
     t.string "location"
     t.float "lng"
     t.float "lat"
-    t.integer "image_id"
+    t.string "image_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20171113170154) do
     t.string "email"
     t.string "password_digest"
     t.string "role"
-    t.integer "image_id"
+    t.string "image_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

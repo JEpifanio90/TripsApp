@@ -49,6 +49,18 @@
                             </md-checkbox>    
                         </div>
                 </md-input-container>
+                <div flex layout="row">
+                    <div flex="70" layout="column">
+                        <input id="input-file-id" class="ng-hide" nv-file-select type="file" uploader="userCtrl.uploader"/><br/>
+                        <label flex class="md-button md-raised md-primary" for="input-file-id">
+                            <md-icon class="material-icons" style="display:inline-block; margin: 0 2px 5px 0;">add_a_photo</md-icon>
+                            Upload profile image
+                        </label>
+                    </div>
+                    <div flex="30" ng-repeat="item in userCtrl.uploader.queue" ng-click="item.remove()">
+                        <div ng-thumb="{ file: item._file, width: 70, height: 70 }" class="file_thumb"><canvas></canvas></div>
+                    </div>
+                </div>
             </div>
         </md-dialog-content>
         <md-dialog-actions layout="row">

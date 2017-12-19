@@ -14,7 +14,8 @@ User.create(
             email: 'test.subject01@gmail.com',
             password: 'asdqwe123',
             password_confirmation: 'asdqwe123',
-            role: 'master'
+            role: 'master',
+            image_name: '2asd.jpg'
         }, 
         {
             first_name: 'test',
@@ -22,7 +23,8 @@ User.create(
             email: 'test.subject02@gmail.com',
             password: 'asdqwe123',
             password_confirmation: 'asdqwe123',
-            role: 'Trips Advisor'
+            role: 'Trips Advisor',
+            image_name: '2asd.jpg'
         },
         {
             first_name: 'test',
@@ -30,7 +32,8 @@ User.create(
             email: 'test.subject03@gmail.com',
             password: 'asdqwe123',
             password_confirmation: 'asdqwe123',
-            role: 'Trips Manager'
+            role: 'Trips Manager',
+            image_name: '2asd.jpg'
         },
         {
             first_name: 'test',
@@ -38,7 +41,8 @@ User.create(
             email: 'test.subject04@gmail.com',
             password: 'asdqwe123',
             password_confirmation: 'asdqwe123',
-            role: 'Trips Advisor'
+            role: 'Trips Advisor',
+            image_name: '2asd.jpg'
         },
         {
             first_name: 'test',
@@ -46,7 +50,8 @@ User.create(
             email: 'test.subject05@gmail.com',
             password: 'asdqwe123',
             password_confirmation: 'asdqwe123',
-            role: 'Trips Manager'
+            role: 'Trips Manager',
+            image_name: '2asd.jpg'
         }
     ]
 )
@@ -60,7 +65,7 @@ Trip.create(
             location: 'Mexico',
             lat: 23.6345,
             lng: 102.5528,
-            image_id: 1
+            image_name: '1test.jpg'
         },
         {
             owner_id: 1,
@@ -69,7 +74,7 @@ Trip.create(
             location: 'Mexico',
             lat: 23.6345,
             lng: 102.5528,
-            image_id: 1
+            image_name: '1test.jpg'
         },
         {
             owner_id: 1,
@@ -78,7 +83,7 @@ Trip.create(
             location: 'Mexico',
             lat: 23.6345,
             lng: 102.5528,
-            image_id: 1
+            image_name: '1test.jpg'
         },
         {
             owner_id: 1,
@@ -87,7 +92,7 @@ Trip.create(
             location: 'Mexico',
             lat: 23.6345,
             lng: 102.5528,
-            image_id: 1
+            image_name: '1test.jpg'
         }
     ]
 )
