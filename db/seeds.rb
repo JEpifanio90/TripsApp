@@ -63,26 +63,26 @@ Trip.create(
             title: 'trip 01',
             description: 'trip description 01',
             location: 'Mexico',
-            lat: 23.6345,
-            lng: 102.5528,
+            lat: 19.432608,
+            lng: -99.133209,
             image_name: '1test.jpg'
         },
         {
             owner_id: 1,
             title: 'trip 02',
             description: 'trip description 02',
-            location: 'Mexico',
-            lat: 23.6345,
-            lng: 102.5528,
+            location: 'EUA',
+            lat: 37.0902,
+            lng: 95.7129,
             image_name: '1test.jpg'
         },
         {
             owner_id: 1,
             title: 'trip 03',
             description: 'trip description 03',
-            location: 'Mexico',
-            lat: 23.6345,
-            lng: 102.5528,
+            location: 'Rusia',
+            lat: 61.5240,
+            lng: 105.3188,
             image_name: '1test.jpg'
         },
         {
@@ -90,8 +90,8 @@ Trip.create(
             title: 'trip 04',
             description: 'trip description 04',
             location: 'Mexico',
-            lat: 23.6345,
-            lng: 102.5528,
+            lat: 25.2744,
+            lng: 133.7751,
             image_name: '1test.jpg'
         }
     ]

@@ -1,0 +1,47 @@
+<md-content layout="row" class="full-height">
+    <md-list flex="30" class="full-height">
+        <md-subheader class="md-no-sticky">All available trips</md-subheader>
+        <md-list-item class="md-3-line" ng-click="null" ng-repeat="trip in dashCtrl.trips">
+          <%= image_tag("/images/{{ trip.image_name }}", :class => "md-avatar") %>
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ trip.title }}</h3>
+            <h4>{{ trip.location }}</h4>
+          </div>
+        </md-list-item>
+    </md-list>
+    <md-content flex="70" class="full-height">
+        <ng-map id="tripMap" center="41,-87" zoom="3" class="full-height">
+            <marker
+                id="{{ trip.markerId }}"
+                ng-repeat="trip in dashCtrl.trips"
+                position="{{trip.lat}}, {{trip.lng}}"
+                on-click="dashCtrl.mapInstance.showInfoWindow('1infoWin')"
+            ></marker>
+            <info-window
+                ng-repeat="trip in dashCtrl.trips"
+                id="{{ trip.infoWindowId }}"
+                visible-on-marker="{{ trip.markerId }}"
+            >
+                <div ng-non-bindable>
+                <div id="siteNotice"></div>
+                <h1 id="firstHeading" class="firstHeading">{{ trip.title }}</h1>
+                <div id="bodyContent">
+                    <p><b>{{ trip.title }}</b>, also referred to as <b>Ayers Rock</b>, is a large 
+                    sandstone rock formation in the southern part of the 
+                    Northern Territory, central Australia. It lies 335 km (208 mi)
+                    south west of the nearest large town, Alice Springs; 450 km 
+                    (280 mi) by road. Kata Tjuta and Uluru are the two major
+                    features of the Uluru - Kata Tjuta National Park. Uluru is
+                    sacred to the Pitjantjatjara and Yankunytjatjara, the
+                    Aboriginal people of the area. It has many springs, waterholes,
+                    rock caves and ancient paintings. Uluru is listed as a World
+                    Heritage Site.</p>
+                    <p>Attribution: Uluru, <a href="http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">
+                    http://en.wikipedia.org/w/index.php?title=Uluru</a> 
+                    (last visited June 22, 2009).</p>
+                </div>
+                </div>
+            </info-window>
+        </ng-map>
+    </md-content>
+</md-content>

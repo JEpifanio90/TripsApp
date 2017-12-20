@@ -3,14 +3,31 @@
 
     angular.module('tripsApp').controller('dashboardController', dashboardCtrlFn);
 
-    dashboardCtrlFn.$inject = ['NgMap'];
-    function dashboardCtrlFn(NgMap) {
+    dashboardCtrlFn.$inject = ['NgMap', 'requestService'];
+    function dashboardCtrlFn(NgMap, requestService) {
         var dashboardScope = this;
-        dashboardScope.apiKey = 'AIzaSyD9fzFt0GjhKCpY7JMC-DCB5a8HNWC9ht8';
-        NgMap.getMap().then(function(map) {
-            console.log(map.getCenter());
-            console.log('markers', map.markers);
-            console.log('shapes', map.shapes);
+        dashboardScope.trips = [];
+        dashboardScope.currentTrip = {};
+        getTrips();
+
+        NgMap.getMap('tripMap').then(function(map) {
+            dashboardScope.mapInstance = map;
         });
+
+        function getTrips() {
+            dashboardScope.currentTrip = null;
+            dashboardScope.trips = [];
+            requestService.get(true).then(function(response) {
+                if (response.status === 200) {
+                    response.data.forEach(trip => {
+                        trip.markerId = trip.id + "marker";
+                        trip.infoWindowId = trip.id + "infoWin";
+                        dashboardScope.trips.push(trip);
+                    });
+                }
+            }).catch(function(error) {
+                console.log(error);
+            });
+        }
     }
 })();

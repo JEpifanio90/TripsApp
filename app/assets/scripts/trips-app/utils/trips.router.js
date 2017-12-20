@@ -63,7 +63,7 @@
             controllerAs: 'dashCtrl',
             resolve: {
                 service: ['requestService', 'userSession', function(requestService, userSession) {
-                    requestService.setService(APP_CONFIG.USERS_ENDPOINT, userSession.user.token);
+                    requestService.setService(APP_CONFIG.TRIPS_ENDPOINT, userSession.user.token);
                 }]
             }
         };
