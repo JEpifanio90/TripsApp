@@ -31,7 +31,6 @@
                     $state.go('trips');
                 }
             }).catch(function(error) {
-                console.log(error);
                 toastService.show('pan_tool', error.statusText);
             });
         }

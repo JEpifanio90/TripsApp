@@ -68,8 +68,8 @@
                         if (response.status === 201) {
                             getUsers();
                         }
-                    }).then(function(error){
-                        console.log(error);
+                    }).catch(function(error){
+                        console.log(error, '------------POST');
                     });
                 break;
 
@@ -78,8 +78,8 @@
                         if (response.status === 200) {
                             getUsers();
                         }
-                    }).then(function(error){
-                        console.log(error);
+                    }).catch(function(error){
+                        console.log(error, '------------PATCH');
                     });
                 break;
             }

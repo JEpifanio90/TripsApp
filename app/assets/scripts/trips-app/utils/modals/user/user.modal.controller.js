@@ -30,7 +30,7 @@
         };
 
         userScope.uploader.onSuccessItem = function(fileItem, response, status, headers) {
-            userScope.userInfo.image_name = response.name;
+            userScope.userInfo.image_name = response.id + response.name;
         };
 
         userScope.setRole = function(role) {
