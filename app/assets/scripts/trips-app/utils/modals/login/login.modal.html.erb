@@ -13,7 +13,7 @@
             <md-tabs md-dynamic-height md-border-bottom>
                 <md-tab label="Sign in">
                     <md-content class="md-padding">
-                        <h1 class="md-display-5" style="margin-bottom: 0px;">Account Info</h1>
+                        <h1 class="md-display-5" style="margin-bottom: 0px;">New Account</h1>
                         <div layout="column">
                             <div flex layout="row">
                                 <md-icon class="material-icons" style="display:inline-block; margin-top: 22px">create</md-icon>
@@ -58,14 +58,15 @@
                 </md-tab>
                 <md-tab label="Log in">
                     <md-content class="md-padding">
-                        <h1 class="md-display-5">Account Info</h1>
+                        <h1 class="md-display-5">Login</h1>
                             <div layout="column">
                                 <md-input-container flex="50">
+                                    <md-icon class="material-icons" style="display:inline-block;">email</md-icon>
                                     <label>Account</label>
                                     <input ng-model="loginCtrl.user.email">
                                 </md-input-container>
-
                                 <md-input-container flex="50">
+                                    <md-icon class="material-icons" style="display:inline-block;">security</md-icon>
                                     <label>Password</label>
                                     <input ng-model="loginCtrl.user.password" type="password">
                                 </md-input-container>
@@ -75,14 +76,14 @@
             </md-tabs>
         </md-dialog-content>
         <md-dialog-actions layout="row">
-            <md-button href="http://lmgtfy.com/?q=How+to+not+forget+passwords%3F" target="_blank" md-autofocus>
+            <md-button class="md-warn" href="http://lmgtfy.com/?q=How+to+not+forget+passwords%3F" target="_blank" md-autofocus>
               Forgot Password?
             </md-button>
             <span flex></span>
-            <md-button ng-click="loginCtrl.cancel()" >
+            <md-button class="md-warn" ng-click="loginCtrl.cancel()" >
               Cancel
             </md-button>
-            <md-button ng-click="loginCtrl.sendCredentials()" style="margin-right:20px;" >
+            <md-button class="md-warn" ng-click="loginCtrl.sendCredentials()" style="margin-right:20px;" >
               Ok
             </md-button>
         </md-dialog-actions>

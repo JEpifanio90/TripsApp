@@ -9,17 +9,17 @@
         <md-toolbar>
             <h1 class="md-toolbar-tools">Manage trips/Users</h1>
             <md-content layout-padding layout="column">
-                <md-button ng-click="headerCtrl.openMenu()" ui-sref='trips' class="md-primary">
-                    <span><i class="material-icons">flight</i> Trips</span>
+                <md-button class="md-warn" ng-click="headerCtrl.openMenu()" ui-sref='trips'>
+                    <md-icon class="material-icons">flight</md-icon> Trips
                 </md-button>
-                <md-button ng-show="headerCtrl.isAdmin()" ng-click="headerCtrl.openMenu()" ui-sref='users' class="md-primary">
-                    <span><i class="material-icons">group</i> Users</span>
+                <md-button class="md-warn" ng-show="headerCtrl.isAdmin()" ng-click="headerCtrl.openMenu()" ui-sref='users'>
+                    <md-icon class="material-icons">group</md-icon> Users
                 </md-button>
-                <md-button ng-show="headerCtrl.isAdmin()" ng-click="headerCtrl.openMenu()" ui-sref='dashboard' class="md-primary">
-                    <span><i class="material-icons">public</i> Explore</span>
+                <md-button class="md-warn" ng-show="headerCtrl.isAdmin()" ng-click="headerCtrl.openMenu()" ui-sref='dashboard'>
+                    <md-icon class="material-icons">public</md-icon> Explore
                 </md-button>
-                <md-button ng-click="headerCtrl.resetEverything()" ui-sref='login' class="md-primary">
-                    <span><i class="material-icons">exit_to_app</i> Exit</span>
+                <md-button class="md-warn" ng-click="headerCtrl.resetEverything()" ui-sref='login'>
+                    <md-icon class="material-icons">exit_to_app</md-icon> Exit
                 </md-button>
             </md-content>
         </md-toolbar>

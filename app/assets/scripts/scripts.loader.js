@@ -15,6 +15,7 @@
 
     // UTILS
         //= require trips-app/utils/constants
+        //= require trips-app/utils/trips.colors
         //= require trips-app/utils/services/request.service
         //= require trips-app/utils/services/user.account.service
         //= require trips-app/utils/services/toast.service

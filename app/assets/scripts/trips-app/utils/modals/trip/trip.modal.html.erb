@@ -36,7 +36,7 @@
                 <div flex="34" layout="row">
                     <div flex="70" layout="column">
                         <input id="input-file-id" class="ng-hide" nv-file-select type="file" uploader="tripCtrl.uploader"/><br/>
-                        <label flex class="md-button md-raised md-primary" for="input-file-id">
+                        <label flex class="md-button md-raised md-warn" for="input-file-id">
                             <md-icon class="material-icons" style="display:inline-block; margin: 0 2px 5px 0;">add_a_photo</md-icon>
                             Upload image
                         </label>
@@ -66,10 +66,10 @@
             </div>
         </md-dialog-content>
         <md-dialog-actions layout="row">
-            <md-button ng-click="tripCtrl.cancel()" >
+            <md-button class="md-warn" ng-click="tripCtrl.cancel()" >
               Cancel
             </md-button>
-            <md-button ng-click="tripCtrl.hide()" style="margin-right:20px;" >
+            <md-button class="md-warn" ng-click="tripCtrl.hide()" style="margin-right:20px;" >
               Save
             </md-button>
         </md-dialog-actions>
