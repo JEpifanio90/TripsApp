@@ -1,7 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   # Code is not reloaded between requests.
-  Uglifier.new(:harmony => true)
   config.assets.js_compressor = :uglifier
   config.assets.css_compressor = :sass
   config.assets.compile = true

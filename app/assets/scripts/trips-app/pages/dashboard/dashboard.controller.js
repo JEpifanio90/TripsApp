@@ -17,7 +17,7 @@
 
         NgMap.getMap('tripMap').then(function(map) {
             dashboardScope.mapInstance = map;
-            dashboardScope.trips.forEach( trip => {
+            dashboardScope.trips.forEach(function(trip) {
                 dashboardScope.mapInstance.hideInfoWindow(trip.infoWindowId, trip.markerId);
             });
         });
@@ -27,7 +27,7 @@
             dashboardScope.trips = [];
             requestService.get(true).then(function(response) {
                 if (response.status === 200) {
-                    response.data.forEach(trip => {
+                    response.data.forEach(function(trip) {
                         trip.markerId = trip.id + "marker";
                         trip.infoWindowId = trip.id + "infoWin";
                         dashboardScope.trips.push(trip);
