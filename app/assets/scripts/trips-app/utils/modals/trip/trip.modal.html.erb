@@ -52,17 +52,7 @@
                     <label>Search in the map</label>
                     <input ng-model="tripCtrl.searchQuery" ng-change="tripCtrl.searchLocation(tripCtrl.searchQuery)">
                 </md-input-container>
-                <ng-map
-                    id="tripMap"
-                    flex="80"
-                    center="{{ tripCtrl.searchQuery }}"
-                    zoom="5"
-                    zoom-control="true"
-                    zoom-control-options="{style:'SMALL', position:'LEFT_CENTER'}"
-                    scale-control="true"
-                >
-                    <marker animation="DROP" centered="true" position="{{ tripCtrl.trip.lat }}, {{ tripCtrl.trip.lng }}" ></marker>
-                </ng-map>
+                <div id="tripMap" flex="80"></div>
             </div>
         </md-dialog-content>
         <md-dialog-actions layout="row">

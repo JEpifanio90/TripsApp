@@ -7,7 +7,6 @@
     //= require angular-aria/angular-aria
     //= require angular-animate/angular-animate
     //= require angular-material/angular-material
-    //= require ngmap/build/scripts/ng-map.min.js
     //= require angular-file-upload/dist/angular-file-upload.min.js
 
 // Webapp code
@@ -19,6 +18,7 @@
         //= require trips-app/utils/services/request.service
         //= require trips-app/utils/services/user.account.service
         //= require trips-app/utils/services/toast.service
+        //= require trips-app/utils/services/map.service
         //= require trips-app/utils/trips.router
         //= require trips-app/utils/directives/navHeader/navHeader.controller
         //= require trips-app/utils/directives/navHeader/navHeader.directive

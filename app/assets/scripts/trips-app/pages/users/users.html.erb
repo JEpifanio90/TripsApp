@@ -7,7 +7,7 @@
     <md-list ng-cloak flex>
         <md-subheader class="md-no-sticky">Available Users</md-subheader>
         <md-list-item ng-repeat="user in userCtrl.users" ng-click="userCtrl.editUser(user)" class="noright">
-            <%= image_tag("/images/{{ user.image_name }}", :class => "md-avatar") %>
+            <img class="md-avatar" ng-show="trip.image_name" ng-src="/images/{{ trip.image_name }}">
             <p>{{ user.first_name }}</p>
             <p>{{ user.last_name }}</p>
             <p>{{ user.email }}</p>

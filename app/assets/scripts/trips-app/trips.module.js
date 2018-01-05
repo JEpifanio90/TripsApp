@@ -1,5 +1,5 @@
 (function() {
     'use strict';
 
-    angular.module('tripsApp', ['ui.router', 'ngResource', 'ngMaterial', 'ngMap', 'angularFileUpload']);
+    angular.module('tripsApp', ['ui.router', 'ngResource', 'ngMaterial', 'angularFileUpload']);
 })();

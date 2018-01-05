@@ -7,7 +7,7 @@
     <md-list ng-cloak flex="100">
         <md-subheader class="md-no-sticky">Available trips</md-subheader>
         <md-list-item layout="row" ng-repeat="trip in tripsCtrl.trips" ng-click="tripsCtrl.editTrip(trip)" class="noright">
-            <%= image_tag("/images/{{ trip.image_name }}", :class => "md-avatar") %>
+            <img class="md-avatar" ng-show="trip.image_name" ng-src="/images/{{ trip.image_name }}">
             <p flex="20"> {{ trip.title }} </p>
             <p flex="40"> {{ trip.description }} </p>
             <p flex="20"> {{ trip.location }} </p>

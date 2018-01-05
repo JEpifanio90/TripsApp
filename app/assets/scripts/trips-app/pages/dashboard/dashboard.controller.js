@@ -3,35 +3,26 @@
 
     angular.module('tripsApp').controller('dashboardController', dashboardCtrlFn);
 
-    dashboardCtrlFn.$inject = ['NgMap', 'requestService'];
-    function dashboardCtrlFn(NgMap, requestService) {
+    dashboardCtrlFn.$inject = ['googleMapsService', 'requestService'];
+    function dashboardCtrlFn(googleMapsService, requestService) {
         var dashboardScope = this;
         dashboardScope.trips = [];
-        dashboardScope.currentTrip = {};
         dashboardScope.center = [40.74, -74.18];
         getTrips();
+        googleMapsService.init('tripsMap');
 
         dashboardScope.findInMap = function(trip) {
-            dashboardScope.center = [trip.lat, trip.lng];
+            googleMapsService.setLocation(trip.lat, trip.lng);
         };
 
-        NgMap.getMap('tripMap').then(function(map) {
-            dashboardScope.mapInstance = map;
-            dashboardScope.trips.forEach(function(trip) {
-                dashboardScope.mapInstance.hideInfoWindow(trip.infoWindowId, trip.markerId);
-            });
-        });
-
         function getTrips() {
-            dashboardScope.currentTrip = null;
             dashboardScope.trips = [];
             requestService.get(true).then(function(response) {
                 if (response.status === 200) {
                     response.data.forEach(function(trip) {
-                        trip.markerId = trip.id + "marker";
-                        trip.infoWindowId = trip.id + "infoWin";
-                        dashboardScope.trips.push(trip);
+                        googleMapsService.createMarker(trip);
                     });
+                    dashboardScope.trips = response.data;
                 }
             }).catch(function(error) {
                 console.log(error);
