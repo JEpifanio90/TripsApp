@@ -14,8 +14,8 @@ User.create(
             email: 'test.subject01@gmail.com',
             password: 'asdqwe123',
             password_confirmation: 'asdqwe123',
-            role: 'master',
-            image_name: '2asd.jpg'
+            role: 'Trips Manager',
+            image_name: 'default_profile.jpg'
         }, 
         {
             first_name: 'test',
@@ -24,7 +24,7 @@ User.create(
             password: 'asdqwe123',
             password_confirmation: 'asdqwe123',
             role: 'Trips Advisor',
-            image_name: '2asd.jpg'
+            image_name: 'default_profile.jpg'
         },
         {
             first_name: 'test',
@@ -33,7 +33,7 @@ User.create(
             password: 'asdqwe123',
             password_confirmation: 'asdqwe123',
             role: 'Trips Manager',
-            image_name: '2asd.jpg'
+            image_name: 'default_profile.jpg'
         },
         {
             first_name: 'test',
@@ -42,7 +42,7 @@ User.create(
             password: 'asdqwe123',
             password_confirmation: 'asdqwe123',
             role: 'Trips Advisor',
-            image_name: '2asd.jpg'
+            image_name: 'default_profile.jpg'
         },
         {
             first_name: 'test',
@@ -51,7 +51,7 @@ User.create(
             password: 'asdqwe123',
             password_confirmation: 'asdqwe123',
             role: 'Trips Manager',
-            image_name: '2asd.jpg'
+            image_name: 'default_profile.jpg'
         }
     ]
 )
@@ -65,7 +65,7 @@ Trip.create(
             location: 'Mexico',
             lat: 19.432608,
             lng: -99.133209,
-            image_name: '1test.jpg'
+            image_name: 'default_trip.png'
         },
         {
             owner_id: 1,
@@ -74,7 +74,7 @@ Trip.create(
             location: 'EUA',
             lat: 37.0902,
             lng: 95.7129,
-            image_name: '1test.jpg'
+            image_name: 'default_trip.png'
         },
         {
             owner_id: 1,
@@ -83,7 +83,7 @@ Trip.create(
             location: 'Rusia',
             lat: 61.5240,
             lng: 105.3188,
-            image_name: '1test.jpg'
+            image_name: 'default_trip.png'
         },
         {
             owner_id: 1,
@@ -92,7 +92,7 @@ Trip.create(
             location: 'Mexico',
             lat: 25.2744,
             lng: 133.7751,
-            image_name: '1test.jpg'
+            image_name: 'default_trip.png'
         }
     ]
 )
