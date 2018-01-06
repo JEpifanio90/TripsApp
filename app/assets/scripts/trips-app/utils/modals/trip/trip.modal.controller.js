@@ -3,10 +3,9 @@
 
     angular.module('tripsApp').controller('tripController', newTripCtrlFn);
 
-    newTripCtrlFn.$inject = ['$mdDialog', 'FileUploader', 'googleMapsService', 'userSession', 'currentTrip'];
-    function newTripCtrlFn($mdDialog, FileUploader, googleMapsService, userSession, currentTrip) {
+    newTripCtrlFn.$inject = ['$mdDialog', '$timeout', 'FileUploader', 'googleMapsService', 'userSession', 'currentTrip'];
+    function newTripCtrlFn($mdDialog, $timeout, FileUploader, googleMapsService, userSession, currentTrip) {
         var newTripScope = this;
-        googleMapsService.init('tripMap');
         newTripScope.trip = (currentTrip) ? currentTrip : {
             title: '',
             description: '',
@@ -34,9 +33,16 @@
         };
 
         newTripScope.searchLocation = function(address) {
-            var coordinates = googleMapsService.getCoordinates();
-            newTripScope.trip.lat = coordinates.lat();
-            newTripScope.trip.lng = coordinates.lng();
+            googleMapsService.setLocation(address);
+            var coord = googleMapsService.getCoordinates();
+            newTripScope.trip.lat = coord.lat();
+            newTripScope.trip.lng = coord.lng();
+        };
+
+        newTripScope.setCoordinates = function() {
+            if (newTripScope.trip.lat && newTripScope.trip.lng) {
+                googleMapsService.setCoordinates(newTripScope.trip.lat, newTripScope.trip.lng);
+            }
         };
 
         newTripScope.cancel = function() {
@@ -47,5 +53,9 @@
             newTripScope.trip.location = newTripScope.searchQuery;
             $mdDialog.hide(newTripScope.trip);
         };
+
+        $timeout(function() {
+            googleMapsService.init('tripMap');
+        }, 0);
     }
 })();

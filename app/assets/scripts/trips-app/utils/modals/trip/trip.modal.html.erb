@@ -25,12 +25,12 @@
                 <div flex="33" layout="row">
                     <md-icon class="material-icons" style="display:inline-block; margin-top: 22px">add_location</md-icon>
                     <md-input-container flex style="margin-bottom: 0px;">
-                        <label>longitude</label>
-                        <input ng-model="tripCtrl.trip.lng" type="number">
+                        <label>Latitude</label>
+                        <input ng-change="tripCtrl.setCoordinates()" ng-model="tripCtrl.trip.lat" type="number">
                     </md-input-container>
                     <md-input-container flex style="margin-bottom: 0px;">
-                        <label>Latitude</label>
-                        <input ng-model="tripCtrl.trip.lat" type="number">
+                        <label>longitude</label>
+                        <input ng-change="tripCtrl.setCoordinates()" ng-model="tripCtrl.trip.lng" type="number">
                     </md-input-container>
                 </div>
                 <div flex="34" layout="row">
@@ -50,7 +50,7 @@
                 <md-input-container flex="20" style="margin-bottom: 0;">
                     <md-icon class="material-icons" style="display:inline-block;">search</md-icon>
                     <label>Search in the map</label>
-                    <input ng-model="tripCtrl.searchQuery" ng-change="tripCtrl.searchLocation(tripCtrl.searchQuery)">
+                    <input ng-model="tripCtrl.searchQuery" ng-change="tripCtrl.searchLocation(tripCtrl.searchQuery)" type="text">
                 </md-input-container>
                 <div id="tripMap" flex="80"></div>
             </div>

@@ -12,7 +12,7 @@
         googleMapsService.init('tripsMap');
 
         dashboardScope.findInMap = function(trip) {
-            googleMapsService.setLocation(trip.lat, trip.lng);
+            googleMapsService.setCoordinates(trip.lat, trip.lng);
         };
 
         function getTrips() {
