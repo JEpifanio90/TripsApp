@@ -29,7 +29,7 @@
         };
 
         newTripScope.uploader.onSuccessItem = function(fileItem, response, status, headers) {
-            newTripScope.trip.image_name = response.name;
+            newTripScope.trip.image_name = response.id + response.name;
         };
 
         newTripScope.searchLocation = function(address) {

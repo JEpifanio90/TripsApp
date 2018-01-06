@@ -52,7 +52,6 @@
         };
 
         mapScope.createMarker = function(trip) {
-            cleanUpMarkers();
             var marker = new google.maps.Marker({
                 position: {lat: trip.lat, lng: trip.lng},
                 map: mapScope.map,
