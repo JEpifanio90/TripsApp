@@ -3,8 +3,8 @@
 
     angular.module('tripsApp').controller('tripController', newTripCtrlFn);
 
-    newTripCtrlFn.$inject = ['$mdDialog', '$timeout', 'FileUploader', 'googleMapsService', 'userSession', 'currentTrip'];
-    function newTripCtrlFn($mdDialog, $timeout, FileUploader, googleMapsService, userSession, currentTrip) {
+    newTripCtrlFn.$inject = ['$mdDialog', '$timeout', 'APP_CONFIG', 'FileUploader', 'googleMapsService', 'userSession', 'currentTrip'];
+    function newTripCtrlFn($mdDialog, $timeout, APP_CONFIG, FileUploader, googleMapsService, userSession, currentTrip) {
         var newTripScope = this;
         newTripScope.trip = (currentTrip) ? currentTrip : {
             title: '',
@@ -14,7 +14,7 @@
             lat: 0
         };
         newTripScope.uploader = new FileUploader({
-            url: 'http://localhost:3000/api/images',
+            url: APP_CONFIG.SERVER_URL + APP_CONFIG.IMAGES_ENDPOINT,
             headers: {
                 Authorization: userSession.user.token
             },
